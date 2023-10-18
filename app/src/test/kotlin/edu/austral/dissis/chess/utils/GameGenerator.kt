@@ -1,4 +1,4 @@
-package utils
+package edu.austral.dissis.chess.utils
 
 import board.Board
 import game.Game

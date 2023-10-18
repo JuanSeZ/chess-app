@@ -1,11 +1,11 @@
-package piece
+package edu.austral.dissis.chess.piece
 
 import board.Position
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
 import result.game.SuccesfulMoveResult
-import utils.generateTestGame
-import utils.pawnInCenter
+import edu.austral.dissis.chess.utils.generateTestGame
+import edu.austral.dissis.chess.utils.pawnInCenter
 
 class KingTest {
 

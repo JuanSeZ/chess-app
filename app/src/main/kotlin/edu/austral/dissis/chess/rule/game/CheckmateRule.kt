@@ -1,4 +1,4 @@
-package rule.game
+package edu.austral.dissis.chess.rule.game
 
 import board.Move
 import edu.austral.dissis.chess.result.validation.InvalidResult

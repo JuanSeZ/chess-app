@@ -1,4 +1,4 @@
-package utils
+package edu.austral.dissis.chess.utils
 
 import ClassicBoard
 import board.Board
@@ -6,7 +6,6 @@ import board.Position
 import factory.piece.ClassicPieceFactory
 import factory.rule.ClassicRuleFactory
 import piece.Color
-import piece.Piece
 import piece.PieceType
 
 fun pawnInCenter(): Board {

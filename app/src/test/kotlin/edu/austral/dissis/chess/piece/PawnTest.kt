@@ -1,12 +1,12 @@
-package piece
+package edu.austral.dissis.chess.piece
 
 import board.Position
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 import result.game.SuccesfulMoveResult
-import utils.generateTestGame
-import utils.pawnInCenter
-import utils.pawnInCenterWithEnemyDiagonal
+import edu.austral.dissis.chess.utils.generateTestGame
+import edu.austral.dissis.chess.utils.pawnInCenter
+import edu.austral.dissis.chess.utils.pawnInCenterWithEnemyDiagonal
 
 class PawnTest {
 
