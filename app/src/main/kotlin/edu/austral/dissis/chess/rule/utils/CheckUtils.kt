@@ -22,8 +22,8 @@ fun isInCheck(board: Board, turn: Color): Boolean {
 fun possibleMoves(board: Board,turn: Color): List<Move> {
     val friendlyPieces : List<Position> = board.getBoard().filterValues { it.color == turn }.keys.toList()
     val possibleMoves : MutableList<Move> = mutableListOf()
-    for (i in 1 until board.getXSize()){
-        for (j in 1 until board.getYSize()){
+    for (i in 1 until board.getColumnsSize()){
+        for (j in 1 until board.getRowsSize()){
             val position = Position(i,j)
             for (friendlyPiece in friendlyPieces){
                 val possibleMove = Move(board,friendlyPiece,position,turn)

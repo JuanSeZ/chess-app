@@ -8,7 +8,10 @@ import rule.Rule
 
 class HasEnemyRule: Rule {
     override fun validate(move: Move): ValidationResult {
-        if (move.board.getPieceAt(move.to)?.color != move.board.getPieceAt(move.from)?.color) return ValidResult
+        move.board.getPieceAt(move.to)?.let {
+            if (it.color != move.turn) return ValidResult
+            else return InvalidResult()
+        }
         return InvalidResult()
     }
 }

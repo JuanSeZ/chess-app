@@ -24,7 +24,8 @@ class Game(
         if (globalValidationResult is RuleViolationResult) return globalValidationResult
         val pieceValidationResult = validatePieceRules(move)
         if (pieceValidationResult is RuleViolationResult) return pieceValidationResult
-        TODO()
+//      TODO: Verify checkmate
+        return pieceValidationResult
     }
 
     private fun validatePieceRules(move: Move): MoveResult {

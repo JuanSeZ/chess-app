@@ -8,13 +8,13 @@ import rule.Rule
 
 class VerticalObstacleRule : Rule {
     override fun validate(move: Move): ValidationResult {
-        val (start, end) = if (move.from.y > move.to.y) {
-            move.to.y + 1 to move.from.y
+        val (start, end) = if (move.from.row > move.to.row) {
+            move.to.row + 1 to move.from.row
         } else {
-            move.from.y + 1 to move.to.y
+            move.from.row + 1 to move.to.row
         }
         for (i in start until end) {
-            if (move.board.getPieceAt(move.from.copy(y = i)) != null) {
+            if (move.board.getPieceAt(move.from.copy(row = i)) != null) {
                 return InvalidResult()
             }
         }

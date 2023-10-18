@@ -12,18 +12,18 @@ class ClassicBoard(private val xSize: Int,private val ySize: Int,private val pos
     }
 
     override fun getPieceAt(position: Position): Piece? {
-        return positions[position]?: throw IllegalArgumentException("No piece at $position")
+        return positions[position]
     }
 
     override fun getBoard(): Map<Position, Piece> {
         return positions
     }
 
-    override fun getXSize(): Int {
+    override fun getColumnsSize(): Int {
         return xSize
     }
 
-    override fun getYSize(): Int {
+    override fun getRowsSize(): Int {
         return ySize
     }
 }

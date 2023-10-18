@@ -1,7 +1,7 @@
 package factory.rule
 
 import piece.PieceType
-import rule.AndRule
+import edu.austral.dissis.chess.rule.AndRule
 import rule.OrRule
 import rule.Rule
 import rule.piece.HasEnemyRule
@@ -32,7 +32,7 @@ class ClassicRuleFactory: RuleFactory {
             listOf(
                 AndRule(
                     listOf(LimitedQuantityRule(1),VerticalOrientationRule(), VerticalObstacleRule()))
-                ,AndRule(
+                , AndRule(
                     listOf(LimitedQuantityRule(1),DiagonalOrientationRule(),HasEnemyRule()))
             ))
     }
@@ -42,7 +42,7 @@ class ClassicRuleFactory: RuleFactory {
             listOf(
                 AndRule(
                     listOf(VerticalOrientationRule(), VerticalObstacleRule()))
-                ,AndRule(
+                , AndRule(
                     listOf(HorizontalOrientationRule(), HorizontalObstacleRule())
                 )
             )
@@ -74,10 +74,10 @@ class ClassicRuleFactory: RuleFactory {
             listOf(
                 AndRule(
                     listOf(VerticalOrientationRule(), VerticalObstacleRule()))
-                ,AndRule(
+                , AndRule(
                     listOf(HorizontalOrientationRule(), HorizontalObstacleRule())
                 )
-                ,AndRule(
+                , AndRule(
                     listOf(DiagonalOrientationRule(), DiagonalObstacleRule())
                 )
             )
@@ -89,10 +89,10 @@ class ClassicRuleFactory: RuleFactory {
             listOf(
                 AndRule(
                     listOf(LimitedQuantityRule(1),VerticalOrientationRule(), VerticalObstacleRule()))
-                ,AndRule(
+                , AndRule(
                     listOf(LimitedQuantityRule(1),HorizontalOrientationRule(), HorizontalObstacleRule())
                 )
-                ,AndRule(
+                , AndRule(
                     listOf(LimitedQuantityRule(1),DiagonalOrientationRule(), DiagonalObstacleRule())
                 )
             )

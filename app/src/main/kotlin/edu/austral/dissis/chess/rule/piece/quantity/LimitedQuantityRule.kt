@@ -8,7 +8,7 @@ import rule.Rule
 
 class LimitedQuantityRule(private val quantity : Int) : Rule {
     override fun validate(move: Move): ValidationResult {
-        if( move.to.x - move.from.x == quantity || move.to.y - move.from.y == quantity) return ValidResult
+        if( move.to.column - move.from.column == quantity || move.to.row - move.from.row == quantity) return ValidResult
         return InvalidResult()
     }
 }

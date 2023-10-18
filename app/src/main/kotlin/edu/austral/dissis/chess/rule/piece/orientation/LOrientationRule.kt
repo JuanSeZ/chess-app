@@ -9,8 +9,8 @@ import kotlin.math.abs
 
 class LOrientationRule : Rule {
     override fun validate(move: Move): ValidationResult {
-        val xDiff = abs(move.from.x - move.to.x)
-        val yDiff = abs(move.from.y - move.to.y)
+        val xDiff = abs(move.from.column - move.to.column)
+        val yDiff = abs(move.from.row - move.to.row)
         if ((xDiff == 1 && yDiff == 2) || (xDiff == 2 && yDiff == 1)) return ValidResult
         return InvalidResult()
     }

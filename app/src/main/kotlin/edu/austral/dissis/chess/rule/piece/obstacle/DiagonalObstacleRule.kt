@@ -8,19 +8,19 @@ import rule.Rule
 
 class DiagonalObstacleRule: Rule {
     override fun validate(move: Move): ValidationResult {
-        val (start, end) = if (move.from.x > move.to.x) {
-            move.to.x + 1 to move.from.x
+        val (start, end) = if (move.from.column > move.to.column) {
+            move.to.column + 1 to move.from.column
         } else {
-            move.from.x + 1 to move.to.x
+            move.from.column + 1 to move.to.column
         }
-        val (startY, endY) = if (move.from.y > move.to.y) {
-            move.to.y + 1 to move.from.y
+        val (startY, endY) = if (move.from.row > move.to.row) {
+            move.to.row + 1 to move.from.row
         } else {
-            move.from.y + 1 to move.to.y
+            move.from.row + 1 to move.to.row
         }
         for (i in start until end) {
             for (j in startY until endY) {
-                if (move.board.getPieceAt(move.from.copy(x = i, y = j)) != null) {
+                if (move.board.getPieceAt(move.from.copy(column = i, row = j)) != null) {
                     return InvalidResult()
                 }
             }

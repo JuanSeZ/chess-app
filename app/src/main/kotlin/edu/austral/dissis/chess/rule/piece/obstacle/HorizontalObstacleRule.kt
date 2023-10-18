@@ -8,13 +8,13 @@ import rule.Rule
 
 class HorizontalObstacleRule : Rule {
     override fun validate(move: Move): ValidationResult {
-        val (start, end) = if (move.from.x > move.to.x) {
-            move.to.x + 1 to move.from.x
+        val (start, end) = if (move.from.column > move.to.column) {
+            move.to.column + 1 to move.from.column
         } else {
-            move.from.x + 1 to move.to.x
+            move.from.column + 1 to move.to.column
         }
         for (i in start until end) {
-            if (move.board.getPieceAt(move.from.copy(x = i)) != null) {
+            if (move.board.getPieceAt(move.from.copy(column = i)) != null) {
                 return InvalidResult()
             }
         }

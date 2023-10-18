@@ -8,7 +8,7 @@ import rule.Rule
 
 class VerticalOrientationRule : Rule {
     override fun validate(move: Move): ValidationResult {
-        if (move.from.y == move.to.y) return ValidResult
+        if (move.from.column == move.to.column) return ValidResult
         return InvalidResult()
     }
 }
