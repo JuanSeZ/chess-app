@@ -1,11 +1,11 @@
 package start
 
 import ClassicBoard
-import board.Board
-import board.Position
-import factory.piece.ClassicPieceFactory
-import factory.piece.PieceFactory
-import factory.rule.ClassicRuleFactory
+import edu.austral.dissis.chess.board.Board
+import edu.austral.dissis.chess.board.Position
+import edu.austral.dissis.chess.factory.piece.ClassicPieceFactory
+import edu.austral.dissis.chess.factory.piece.PieceFactory
+import edu.austral.dissis.chess.factory.rule.ClassicRuleFactory
 import piece.Color
 import piece.PieceType
 
@@ -16,8 +16,8 @@ class ClassicStartingBoard : StartingBoardGenerator {
                 Pair(Position(1, 1), classicPieceFactory.createPiece(PieceType.ROOK, Color.BLACK)),
                 Pair(Position(2, 1), classicPieceFactory.createPiece(PieceType.KNIGHT, Color.BLACK)),
                 Pair(Position(3, 1), classicPieceFactory.createPiece(PieceType.BISHOP, Color.BLACK)),
-                Pair(Position(4, 1), classicPieceFactory.createPiece(PieceType.QUEEN, Color.BLACK)),
-                Pair(Position(5, 1), classicPieceFactory.createPiece(PieceType.KING, Color.BLACK)),
+                Pair(Position(4, 1), classicPieceFactory.createPiece(PieceType.KING, Color.BLACK)),
+                Pair(Position(5, 1), classicPieceFactory.createPiece(PieceType.QUEEN, Color.BLACK)),
                 Pair(Position(6, 1), classicPieceFactory.createPiece(PieceType.BISHOP, Color.BLACK)),
                 Pair(Position(7, 1), classicPieceFactory.createPiece(PieceType.KNIGHT, Color.BLACK)),
                 Pair(Position(8, 1), classicPieceFactory.createPiece(PieceType.ROOK, Color.BLACK)),

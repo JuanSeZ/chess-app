@@ -1,8 +1,8 @@
-import board.Board
-import board.Move
-import game.MoveResultHandler
+import edu.austral.dissis.chess.board.Board
+import edu.austral.dissis.chess.board.Move
+import edu.austral.dissis.chess.game.MoveResultHandler
 
-class ClassicMoveResultHandler : MoveResultHandler{
+class ClassicMoveResultHandler : MoveResultHandler {
     override fun handleSingleMove(move: Move): Board {
         return move.board.move(move.from, move.to)
     }

@@ -1,10 +1,10 @@
 package edu.austral.dissis.chess.adapter
 
-import board.Board
-import board.Position
+import edu.austral.dissis.chess.board.Board
+import edu.austral.dissis.chess.board.Position
 import edu.austral.dissis.chess.gui.*
 import edu.austral.dissis.chess.result.game.EndGameResult
-import game.Game
+import edu.austral.dissis.chess.game.Game
 import piece.Color
 import piece.PieceType
 import edu.austral.dissis.chess.result.game.UnsuccesfulMoveResult

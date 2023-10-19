@@ -1,6 +1,6 @@
 package rule
 
-import board.Move
+import edu.austral.dissis.chess.board.Move
 import result.validation.ValidationResult
 
 interface Rule : ValidationResult {

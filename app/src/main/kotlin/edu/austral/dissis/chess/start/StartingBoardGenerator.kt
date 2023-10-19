@@ -1,6 +1,6 @@
 package start
 
-import board.Board
+import edu.austral.dissis.chess.board.Board
 
 interface StartingBoardGenerator {
     fun generate(): Board

@@ -9,7 +9,7 @@ import edu.austral.dissis.chess.gui.DefaultImageResolver
 import edu.austral.dissis.chess.gui.GameView
 import edu.austral.dissis.chess.rule.game.CheckRule
 import edu.austral.dissis.chess.rule.game.CheckmateRule
-import game.Game
+import edu.austral.dissis.chess.game.Game
 import javafx.application.Application
 import javafx.application.Application.launch
 import javafx.scene.Scene
@@ -20,7 +20,6 @@ import rule.game.NotYourTurnRule
 import start.ClassicStartingBoard
 
 // TODO:
-// Pawn first move 2 squares, shouldn't be able to eat vertical
 // Shouldn't let you move into check
 // Castling
 

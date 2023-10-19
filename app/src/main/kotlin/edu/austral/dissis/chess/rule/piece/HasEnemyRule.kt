@@ -1,6 +1,6 @@
 package rule.piece
 
-import board.Move
+import edu.austral.dissis.chess.board.Move
 import edu.austral.dissis.chess.result.validation.InvalidResult
 import edu.austral.dissis.chess.result.validation.ValidResult
 import result.validation.ValidationResult

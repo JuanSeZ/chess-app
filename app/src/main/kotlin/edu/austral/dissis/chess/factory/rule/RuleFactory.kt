@@ -1,4 +1,4 @@
-package factory.rule
+package edu.austral.dissis.chess.factory.rule
 
 import piece.PieceType
 import rule.Rule

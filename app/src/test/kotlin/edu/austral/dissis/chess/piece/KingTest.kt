@@ -1,6 +1,6 @@
 package edu.austral.dissis.chess.piece
 
-import board.Position
+import edu.austral.dissis.chess.board.Position
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
 import result.game.SuccesfulMoveResult

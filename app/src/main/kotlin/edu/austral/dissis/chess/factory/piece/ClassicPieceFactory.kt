@@ -1,8 +1,8 @@
-package factory.piece
+package edu.austral.dissis.chess.factory.piece
 
-import factory.rule.RuleFactory
+import edu.austral.dissis.chess.factory.rule.RuleFactory
 import piece.Color
-import piece.Piece
+import edu.austral.dissis.chess.piece.Piece
 import piece.PieceType
 
 class ClassicPieceFactory(private val ruleFactory: RuleFactory) : PieceFactory {

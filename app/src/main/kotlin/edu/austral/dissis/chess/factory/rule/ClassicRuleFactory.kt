@@ -1,8 +1,12 @@
-package factory.rule
+package edu.austral.dissis.chess.factory.rule
 
+import edu.austral.dissis.chess.factory.rule.RuleFactory
 import piece.PieceType
 import edu.austral.dissis.chess.rule.AndRule
+import edu.austral.dissis.chess.rule.ForwardDirectionRule
 import edu.austral.dissis.chess.rule.OrRule
+import edu.austral.dissis.chess.rule.piece.FirstMoveRule
+import edu.austral.dissis.chess.rule.piece.HasNotEnemyRule
 import rule.Rule
 import rule.piece.HasEnemyRule
 import edu.austral.dissis.chess.rule.piece.obstacle.DiagonalObstacleRule
@@ -27,13 +31,14 @@ class ClassicRuleFactory: RuleFactory {
     }
 
     private fun classicPawnRule(): Rule {
-//        TODO: Add first move rule
         return OrRule(
             listOf(
                 AndRule(
-                    listOf(LimitedQuantityRule(1),VerticalOrientationRule(), VerticalObstacleRule()))
+                    listOf(LimitedQuantityRule(1),VerticalOrientationRule(), VerticalObstacleRule(),HasNotEnemyRule(),ForwardDirectionRule()))
                 , AndRule(
-                    listOf(LimitedQuantityRule(1), DiagonalOrientationRule(),HasEnemyRule()))
+                    listOf(LimitedQuantityRule(1), DiagonalOrientationRule(),HasEnemyRule(),ForwardDirectionRule()))
+                , AndRule(
+                    listOf(LimitedQuantityRule(2), VerticalOrientationRule(), VerticalObstacleRule(),FirstMoveRule(),ForwardDirectionRule(),HasNotEnemyRule()))
             ))
     }
 

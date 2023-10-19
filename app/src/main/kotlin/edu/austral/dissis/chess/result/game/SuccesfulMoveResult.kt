@@ -1,5 +1,5 @@
 package result.game
 
-import game.Game
+import edu.austral.dissis.chess.game.Game
 
 class SuccesfulMoveResult(val game: Game): MoveResult {}

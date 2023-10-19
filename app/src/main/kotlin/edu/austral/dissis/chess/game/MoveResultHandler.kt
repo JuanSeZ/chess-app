@@ -1,7 +1,7 @@
-package game
+package edu.austral.dissis.chess.game
 
-import board.Board
-import board.Move
+import edu.austral.dissis.chess.board.Board
+import edu.austral.dissis.chess.board.Move
 
 interface MoveResultHandler {
     fun handleSingleMove(move: Move): Board

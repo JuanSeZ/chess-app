@@ -1,7 +1,7 @@
-package factory.piece
+package edu.austral.dissis.chess.factory.piece
 
 import piece.Color
-import piece.Piece
+import edu.austral.dissis.chess.piece.Piece
 import piece.PieceType
 
 interface PieceFactory {

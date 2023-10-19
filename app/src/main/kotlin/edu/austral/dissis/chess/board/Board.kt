@@ -1,6 +1,6 @@
-package board
+package edu.austral.dissis.chess.board
 
-import piece.Piece
+import edu.austral.dissis.chess.piece.Piece
 
 interface Board {
     fun move(from: Position, to: Position): Board

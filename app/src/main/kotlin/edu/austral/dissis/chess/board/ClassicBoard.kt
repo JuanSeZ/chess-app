@@ -1,14 +1,19 @@
-import board.Board
-import board.Position
-import piece.Piece
+import edu.austral.dissis.chess.board.Board
+import edu.austral.dissis.chess.board.Position
+import edu.austral.dissis.chess.piece.Piece
 
 
 
-class ClassicBoard(private val xSize: Int,private val ySize: Int,private val positions: Map<Position,Piece>) : Board {
+class ClassicBoard(private val xSize: Int,private val ySize: Int,private val positions: Map<Position, Piece>) : Board {
 
     override fun move(from: Position, to: Position): Board {
         if(!positions.containsKey(from)) throw IllegalArgumentException("No piece at $from")
-        return ClassicBoard(xSize, ySize, positions+ Pair(to, positions[from]!!) - from)
+        val piece = positions[from]!!
+
+        return ClassicBoard(xSize, ySize, positions+ Pair(to, piece.copy(
+            moveCount = piece.getMoveCount() + 1,
+            id = piece.getId()
+        )) - from)
     }
 
     override fun getPieceAt(position: Position): Piece? {

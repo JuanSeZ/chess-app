@@ -1,8 +1,8 @@
-package game
+package edu.austral.dissis.chess.game
 
-import board.Board
-import board.Move
-import board.Position
+import edu.austral.dissis.chess.board.Board
+import edu.austral.dissis.chess.board.Move
+import edu.austral.dissis.chess.board.Position
 import edu.austral.dissis.chess.result.game.EndGameResult
 import piece.Color
 import result.game.MoveResult
@@ -26,9 +26,9 @@ class Game(
         val globalValidationResult = validateGlobalRules(move)
         if (globalValidationResult is UnsuccesfulMoveResult) return globalValidationResult
         val pieceValidationResult = validatePieceRules(move)
-        if (pieceValidationResult is RuleViolationResult) return pieceValidationResult
-        val winningConditionResult = winningConditionRule.validate(move)
-        if (winningConditionResult is InvalidResult) return EndGameResult(getOppositeTurn())
+        if (pieceValidationResult !is SuccesfulMoveResult ) return pieceValidationResult
+        val winningConditionResult = winningConditionRule.validate(Move(board.move(from,to),from,to,turn))
+        if (winningConditionResult is InvalidResult) return EndGameResult(turn)
         return pieceValidationResult
     }
 

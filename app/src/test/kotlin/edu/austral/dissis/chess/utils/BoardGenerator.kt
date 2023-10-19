@@ -1,10 +1,10 @@
 package edu.austral.dissis.chess.utils
 
 import ClassicBoard
-import board.Board
-import board.Position
-import factory.piece.ClassicPieceFactory
-import factory.rule.ClassicRuleFactory
+import edu.austral.dissis.chess.board.Board
+import edu.austral.dissis.chess.board.Position
+import edu.austral.dissis.chess.factory.piece.ClassicPieceFactory
+import edu.austral.dissis.chess.factory.rule.ClassicRuleFactory
 import piece.Color
 import piece.PieceType
 
@@ -113,7 +113,7 @@ fun kingIsInCheckmate(): Board {
     )
 }
 
-fun blackQueenInPlace(): Board{
+fun blackQueenInPlace(): Board {
     val pieceFactory = ClassicPieceFactory(ClassicRuleFactory())
     return ClassicBoard(
         8,8,
