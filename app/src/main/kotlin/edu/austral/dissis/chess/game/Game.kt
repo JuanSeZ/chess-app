@@ -1,5 +1,6 @@
 package edu.austral.dissis.chess.game
 
+import edu.austral.dissis.chess.game.ClassicMoveResultHandler
 import edu.austral.dissis.chess.board.Board
 import edu.austral.dissis.chess.board.Move
 import edu.austral.dissis.chess.board.Position
@@ -19,7 +20,6 @@ class Game(
     private val globalRules: List<Rule>,
     private val turn: Color,
     private val winningConditionRule: Rule
-
 ){
     fun move(from: Position, to: Position): MoveResult{
         val move = Move(board, from, to, turn)

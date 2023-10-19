@@ -9,8 +9,7 @@ import edu.austral.dissis.chess.factory.rule.ClassicRuleFactory
 import piece.Color
 import piece.PieceType
 
-class ClassicStartingBoard : StartingBoardGenerator {
-    private val classicPieceFactory: PieceFactory = ClassicPieceFactory(ClassicRuleFactory())
+class ClassicStartingBoard(private val classicPieceFactory: ClassicPieceFactory) : StartingBoardGenerator {
     override fun generate(): Board {
         return ClassicBoard(8, 8, mapOf(
                 Pair(Position(1, 1), classicPieceFactory.createPiece(PieceType.ROOK, Color.BLACK)),

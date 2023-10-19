@@ -4,24 +4,25 @@
 package edu.austral.dissis.chess
 
 import edu.austral.dissis.chess.adapter.ChessEngineAdapter
+import edu.austral.dissis.chess.factory.piece.ClassicPieceFactory
+import edu.austral.dissis.chess.factory.rule.AlternativeRuleFactory
+import edu.austral.dissis.chess.factory.rule.ClassicRuleFactory
 import edu.austral.dissis.chess.gui.CachedImageResolver
 import edu.austral.dissis.chess.gui.DefaultImageResolver
 import edu.austral.dissis.chess.gui.GameView
 import edu.austral.dissis.chess.rule.game.CheckRule
 import edu.austral.dissis.chess.rule.game.CheckmateRule
 import edu.austral.dissis.chess.game.Game
+import edu.austral.dissis.chess.rule.game.AlternativeWinRule
 import javafx.application.Application
 import javafx.application.Application.launch
 import javafx.scene.Scene
 import javafx.stage.Stage
 import piece.Color
 import edu.austral.dissis.chess.rule.game.FriendlyFireRule
+import edu.austral.dissis.chess.start.AlternativeStartingBoard
 import rule.game.NotYourTurnRule
 import start.ClassicStartingBoard
-
-// TODO:
-// Shouldn't let you move into check
-// Castling
 
 
 fun main() {
@@ -36,10 +37,10 @@ class ChessGameApplication : Application() {
     )
     private val gameEngine = ChessEngineAdapter(
         Game(
-            ClassicStartingBoard().generate(),
+            ClassicStartingBoard(ClassicPieceFactory(ClassicRuleFactory())).generate(),
             globalRules,
             Color.WHITE,
-           CheckmateRule(globalRules)
+            CheckmateRule(globalRules),
         )
     )
     private val imageResolver = CachedImageResolver(DefaultImageResolver())

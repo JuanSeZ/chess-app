@@ -10,7 +10,7 @@ import edu.austral.dissis.chess.result.validation.ValidResult
 import rule.Rule
 
 fun isInCheck(board: Board, turn: Color): Boolean {
-    val kingPosition : Position = board.getBoard().filterValues { it.type == PieceType.KING && it.color == turn }.keys.first()
+    val kingPosition : Position = getKingPosition(board, turn) ?: throw NoSuchElementException("No king found")
     val enemyPieces : List<Position> = board.getBoard().filterValues { it.color != turn }.keys.toList()
     for (enemyPiece in enemyPieces) {
         val enemyPieceRule = board.getPieceAt(enemyPiece)?.rule
@@ -38,7 +38,7 @@ fun isInCheck(board: Board, turn: Color): Boolean {
 }
 fun isInCheckAfterMove(move: Move): Boolean {
     val newBoard = move.board.move(move.from,move.to)
-    return isInCheck(newBoard,move.turn)
+    return isCheck(newBoard,move.turn)
 }
 
 fun isCheck(board: Board, turn: Color): Boolean {
