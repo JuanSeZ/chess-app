@@ -9,6 +9,6 @@ import rule.Rule
 class HorizontalOrientationRule : Rule {
     override fun validate(move: Move): ValidationResult {
         if (move.from.row == move.to.row) return ValidResult
-        return InvalidResult()
+        return InvalidResult("You can't move horizontally!")
     }
 }

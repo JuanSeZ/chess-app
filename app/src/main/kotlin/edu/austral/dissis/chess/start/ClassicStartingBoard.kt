@@ -21,6 +21,7 @@ class ClassicStartingBoard : StartingBoardGenerator {
                 Pair(Position(6, 1), classicPieceFactory.createPiece(PieceType.BISHOP, Color.BLACK)),
                 Pair(Position(7, 1), classicPieceFactory.createPiece(PieceType.KNIGHT, Color.BLACK)),
                 Pair(Position(8, 1), classicPieceFactory.createPiece(PieceType.ROOK, Color.BLACK)),
+
                 Pair(Position(1, 2), classicPieceFactory.createPiece(PieceType.PAWN, Color.BLACK)),
                 Pair(Position(2, 2), classicPieceFactory.createPiece(PieceType.PAWN, Color.BLACK)),
                 Pair(Position(3, 2), classicPieceFactory.createPiece(PieceType.PAWN, Color.BLACK)),
@@ -29,6 +30,7 @@ class ClassicStartingBoard : StartingBoardGenerator {
                 Pair(Position(6, 2), classicPieceFactory.createPiece(PieceType.PAWN, Color.BLACK)),
                 Pair(Position(7, 2), classicPieceFactory.createPiece(PieceType.PAWN, Color.BLACK)),
                 Pair(Position(8, 2), classicPieceFactory.createPiece(PieceType.PAWN, Color.BLACK)),
+
                 Pair(Position(1, 8), classicPieceFactory.createPiece(PieceType.ROOK, Color.WHITE)),
                 Pair(Position(2, 8), classicPieceFactory.createPiece(PieceType.KNIGHT, Color.WHITE)),
                 Pair(Position(3, 8), classicPieceFactory.createPiece(PieceType.BISHOP, Color.WHITE)),
@@ -36,6 +38,7 @@ class ClassicStartingBoard : StartingBoardGenerator {
                 Pair(Position(5, 8), classicPieceFactory.createPiece(PieceType.KING, Color.WHITE)),
                 Pair(Position(6, 8), classicPieceFactory.createPiece(PieceType.BISHOP, Color.WHITE)),
                 Pair(Position(7, 8), classicPieceFactory.createPiece(PieceType.KNIGHT, Color.WHITE)),
+
                 Pair(Position(8, 8), classicPieceFactory.createPiece(PieceType.ROOK, Color.WHITE)),
                 Pair(Position(1, 7), classicPieceFactory.createPiece(PieceType.PAWN, Color.WHITE)),
                 Pair(Position(2, 7), classicPieceFactory.createPiece(PieceType.PAWN, Color.WHITE)),

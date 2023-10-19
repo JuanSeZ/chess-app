@@ -1,4 +1,4 @@
-package rule.piece.obstacle
+package edu.austral.dissis.chess.rule.piece.obstacle
 
 import board.Move
 import edu.austral.dissis.chess.result.validation.InvalidResult
@@ -15,7 +15,7 @@ class HorizontalObstacleRule : Rule {
         }
         for (i in start until end) {
             if (move.board.getPieceAt(move.from.copy(column = i)) != null) {
-                return InvalidResult()
+                return InvalidResult("There is a piece in the way!")
             }
         }
         return ValidResult

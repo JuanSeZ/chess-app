@@ -2,17 +2,17 @@ package factory.rule
 
 import piece.PieceType
 import edu.austral.dissis.chess.rule.AndRule
-import rule.OrRule
+import edu.austral.dissis.chess.rule.OrRule
 import rule.Rule
 import rule.piece.HasEnemyRule
-import rule.piece.obstacle.DiagonalObstacleRule
-import rule.piece.obstacle.HorizontalObstacleRule
-import rule.piece.obstacle.VerticalObstacleRule
-import rule.piece.orientation.DiagonalOrientationRule
+import edu.austral.dissis.chess.rule.piece.obstacle.DiagonalObstacleRule
+import edu.austral.dissis.chess.rule.piece.obstacle.HorizontalObstacleRule
+import edu.austral.dissis.chess.rule.piece.obstacle.VerticalObstacleRule
+import edu.austral.dissis.chess.rule.piece.orientation.DiagonalOrientationRule
 import rule.piece.orientation.HorizontalOrientationRule
-import rule.piece.orientation.LOrientationRule
+import edu.austral.dissis.chess.rule.piece.orientation.LOrientationRule
 import rule.piece.orientation.VerticalOrientationRule
-import rule.piece.quantity.LimitedQuantityRule
+import edu.austral.dissis.chess.rule.piece.quantity.LimitedQuantityRule
 
 class ClassicRuleFactory: RuleFactory {
     override fun createRule(type: PieceType): Rule {
@@ -33,7 +33,7 @@ class ClassicRuleFactory: RuleFactory {
                 AndRule(
                     listOf(LimitedQuantityRule(1),VerticalOrientationRule(), VerticalObstacleRule()))
                 , AndRule(
-                    listOf(LimitedQuantityRule(1),DiagonalOrientationRule(),HasEnemyRule()))
+                    listOf(LimitedQuantityRule(1), DiagonalOrientationRule(),HasEnemyRule()))
             ))
     }
 
@@ -93,7 +93,7 @@ class ClassicRuleFactory: RuleFactory {
                     listOf(LimitedQuantityRule(1),HorizontalOrientationRule(), HorizontalObstacleRule())
                 )
                 , AndRule(
-                    listOf(LimitedQuantityRule(1),DiagonalOrientationRule(), DiagonalObstacleRule())
+                    listOf(LimitedQuantityRule(1), DiagonalOrientationRule(), DiagonalObstacleRule())
                 )
             )
         )

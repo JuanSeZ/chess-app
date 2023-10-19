@@ -3,14 +3,26 @@
  */
 package edu.austral.dissis.chess
 
+import edu.austral.dissis.chess.adapter.ChessEngineAdapter
 import edu.austral.dissis.chess.gui.CachedImageResolver
 import edu.austral.dissis.chess.gui.DefaultImageResolver
 import edu.austral.dissis.chess.gui.GameView
-import edu.austral.dissis.chess.gui.SimpleGameEngine
+import edu.austral.dissis.chess.rule.game.CheckRule
+import edu.austral.dissis.chess.rule.game.CheckmateRule
+import game.Game
 import javafx.application.Application
 import javafx.application.Application.launch
 import javafx.scene.Scene
 import javafx.stage.Stage
+import piece.Color
+import edu.austral.dissis.chess.rule.game.FriendlyFireRule
+import rule.game.NotYourTurnRule
+import start.ClassicStartingBoard
+
+// TODO:
+// Pawn first move 2 squares, shouldn't be able to eat vertical
+// Shouldn't let you move into check
+// Castling
 
 
 fun main() {
@@ -18,7 +30,19 @@ fun main() {
 }
 
 class ChessGameApplication : Application() {
-    private val gameEngine = SimpleGameEngine()
+    private val globalRules = listOf(
+        FriendlyFireRule(),
+        NotYourTurnRule(),
+        CheckRule()
+    )
+    private val gameEngine = ChessEngineAdapter(
+        Game(
+            ClassicStartingBoard().generate(),
+            globalRules,
+            Color.WHITE,
+           CheckmateRule(globalRules)
+        )
+    )
     private val imageResolver = CachedImageResolver(DefaultImageResolver())
 
     companion object {

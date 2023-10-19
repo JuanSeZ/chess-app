@@ -26,4 +26,8 @@ class ClassicBoard(private val xSize: Int,private val ySize: Int,private val pos
     override fun getRowsSize(): Int {
         return ySize
     }
+
+    override fun getOccupiedPositions(): List<Position> {
+        return positions.keys.toList()
+    }
 }

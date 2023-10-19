@@ -10,8 +10,8 @@ class HasEnemyRule: Rule {
     override fun validate(move: Move): ValidationResult {
         move.board.getPieceAt(move.to)?.let {
             if (it.color != move.turn) return ValidResult
-            else return InvalidResult()
+            else return InvalidResult("You can't eat your own pieces!")
         }
-        return InvalidResult()
+        return InvalidResult("You can't eat empty squares!")
     }
 }

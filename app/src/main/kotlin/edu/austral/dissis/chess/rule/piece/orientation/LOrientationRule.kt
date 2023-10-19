@@ -1,4 +1,4 @@
-package rule.piece.orientation
+package edu.austral.dissis.chess.rule.piece.orientation
 
 import board.Move
 import edu.austral.dissis.chess.result.validation.InvalidResult
@@ -12,6 +12,6 @@ class LOrientationRule : Rule {
         val xDiff = abs(move.from.column - move.to.column)
         val yDiff = abs(move.from.row - move.to.row)
         if ((xDiff == 1 && yDiff == 2) || (xDiff == 2 && yDiff == 1)) return ValidResult
-        return InvalidResult()
+        return InvalidResult("L orientation rule violated!")
     }
 }

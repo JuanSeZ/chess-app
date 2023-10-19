@@ -1,10 +1,11 @@
-package rule.piece.obstacle
+package edu.austral.dissis.chess.rule.piece.obstacle
 
 import board.Move
 import edu.austral.dissis.chess.result.validation.InvalidResult
 import edu.austral.dissis.chess.result.validation.ValidResult
 import result.validation.ValidationResult
 import rule.Rule
+import kotlin.math.abs
 
 class DiagonalObstacleRule: Rule {
     override fun validate(move: Move): ValidationResult {
@@ -20,8 +21,8 @@ class DiagonalObstacleRule: Rule {
         }
         for (i in start until end) {
             for (j in startY until endY) {
-                if (move.board.getPieceAt(move.from.copy(column = i, row = j)) != null) {
-                    return InvalidResult()
+                if ((move.board.getPieceAt(move.from.copy(column = i, row = j)) != null) && abs(i - move.to.column) == abs(j - move.to.row) ) {
+                    return InvalidResult("There is a piece in the way!")
                 }
             }
         }

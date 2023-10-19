@@ -1,4 +1,4 @@
-package rule.game
+package edu.austral.dissis.chess.rule.game
 
 import board.Move
 import edu.austral.dissis.chess.result.validation.InvalidResult
@@ -9,6 +9,6 @@ import rule.Rule
 class FriendlyFireRule : Rule{
     override fun validate(move: Move): ValidationResult {
         if (move.board.getPieceAt(move.to)?.color != move.board.getPieceAt(move.from)?.color) return ValidResult
-        return InvalidResult()
+        return InvalidResult("You can't eat your own pieces!")
     }
 }

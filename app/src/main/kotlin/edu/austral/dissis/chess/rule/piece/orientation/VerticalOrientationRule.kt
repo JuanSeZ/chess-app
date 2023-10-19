@@ -9,6 +9,6 @@ import rule.Rule
 class VerticalOrientationRule : Rule {
     override fun validate(move: Move): ValidationResult {
         if (move.from.column == move.to.column) return ValidResult
-        return InvalidResult()
+        return InvalidResult("You can't move vertically!")
     }
 }

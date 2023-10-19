@@ -8,5 +8,6 @@ interface Board {
     fun getBoard(): Map<Position, Piece>
     fun getColumnsSize(): Int
     fun getRowsSize(): Int
+    fun getOccupiedPositions(): List<Position>
 }
 

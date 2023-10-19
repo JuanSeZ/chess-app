@@ -1,6 +1,7 @@
 package edu.austral.dissis.chess.piece
 
 import board.Position
+import edu.austral.dissis.chess.utils.blackQueenInPlace
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
 import result.game.SuccesfulMoveResult
@@ -27,5 +28,14 @@ class QueenTest {
         )
         assertTrue(game.move(Position(4,4), Position(4,8)) is SuccesfulMoveResult)
         assertTrue(game.move(Position(4,4), Position(8,4)) is SuccesfulMoveResult)
+    }
+
+    @Test
+    fun `should multiple diagonal`(){
+        val game = generateTestGame(
+            blackQueenInPlace(),
+            listOf()
+        )
+        assertTrue(game.move(Position(4,1), Position(8,5)) is SuccesfulMoveResult)
     }
 }
