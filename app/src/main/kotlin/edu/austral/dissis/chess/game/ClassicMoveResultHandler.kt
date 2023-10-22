@@ -1,6 +1,6 @@
 package edu.austral.dissis.chess.game
-import edu.austral.dissis.chess.board.Board
-import edu.austral.dissis.chess.board.Move
+import edu.austral.dissis.common.board.Board
+import edu.austral.dissis.common.board.Move
 import edu.austral.dissis.chess.game.MoveResultHandler
 
 class ClassicMoveResultHandler : MoveResultHandler {

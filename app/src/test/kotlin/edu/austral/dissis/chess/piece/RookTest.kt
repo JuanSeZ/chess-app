@@ -1,9 +1,9 @@
 package edu.austral.dissis.chess.piece
 
-import edu.austral.dissis.chess.board.Position
+import edu.austral.dissis.common.board.Position
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
-import result.game.SuccesfulMoveResult
+import edu.austral.dissis.common.result.game.SuccesfulMoveResult
 import edu.austral.dissis.chess.utils.generateTestGame
 import edu.austral.dissis.chess.utils.rookInCenter
 

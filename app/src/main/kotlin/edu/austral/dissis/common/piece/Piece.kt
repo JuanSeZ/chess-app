@@ -1,8 +1,8 @@
-package edu.austral.dissis.chess.piece
+package edu.austral.dissis.common.piece
 
 import piece.Color
 import piece.PieceType
-import rule.Rule
+import edu.austral.dissis.common.rule.Rule
 
 data class Piece(val type: PieceType, val color: Color, val rule: Rule, private val moveCount: Int = 0, private val id: String = "") {
 

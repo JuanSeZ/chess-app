@@ -1,9 +1,9 @@
 package edu.austral.dissis.chess.rules
 
-import edu.austral.dissis.chess.board.Move
-import edu.austral.dissis.chess.board.Position
-import edu.austral.dissis.chess.result.validation.InvalidResult
-import edu.austral.dissis.chess.result.validation.ValidResult
+import edu.austral.dissis.common.board.Move
+import edu.austral.dissis.common.board.Position
+import edu.austral.dissis.common.result.validation.InvalidResult
+import edu.austral.dissis.common.result.validation.ValidResult
 import edu.austral.dissis.chess.utils.kingIsInCheck
 import org.junit.jupiter.api.Test
 import piece.Color

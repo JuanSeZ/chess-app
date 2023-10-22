@@ -1,25 +1,13 @@
 package edu.austral.dissis.chess.rule.utils
 
-import edu.austral.dissis.chess.board.Board
-import edu.austral.dissis.chess.board.Move
-import edu.austral.dissis.chess.board.Position
-import edu.austral.dissis.chess.result.validation.InvalidResult
+import edu.austral.dissis.common.board.Board
+import edu.austral.dissis.common.board.Move
+import edu.austral.dissis.common.board.Position
+import edu.austral.dissis.common.result.validation.InvalidResult
 import piece.Color
 import piece.PieceType
-import edu.austral.dissis.chess.result.validation.ValidResult
-import rule.Rule
-
-fun isInCheck(board: Board, turn: Color): Boolean {
-    val kingPosition : Position = getKingPosition(board, turn) ?: throw NoSuchElementException("No king found")
-    val enemyPieces : List<Position> = board.getBoard().filterValues { it.color != turn }.keys.toList()
-    for (enemyPiece in enemyPieces) {
-        val enemyPieceRule = board.getPieceAt(enemyPiece)?.rule
-        if (enemyPieceRule?.validate(Move(board, enemyPiece, kingPosition, turn)) == ValidResult) {
-            return true
-        }
-    }
-    return false
-}
+import edu.austral.dissis.common.result.validation.ValidResult
+import edu.austral.dissis.common.rule.Rule
 
  fun findPossibleMoves(piecePosition: Position, board: Board, gameRules: List<Rule>): List<Move>{
     val piece = board.getPieceAt(piecePosition) ?: throw NoSuchElementException("No piece found")
@@ -67,7 +55,7 @@ fun oppositeColor(turn: Color): Color {
     }
 }
 
-fun attacksKing(board: Board, position: Position,turn: Color, kingsPosition: Position): Boolean {
+fun attacksKing(board: Board, position: Position, turn: Color, kingsPosition: Position): Boolean {
     if (board.getPieceAt(position)?.color != turn) {
         val piece = board.getPieceAt(position) ?: throw NoSuchElementException("No piece found")
         when (

@@ -1,3 +1,3 @@
-package edu.austral.dissis.chess.board
+package edu.austral.dissis.common.board
 
 data class Position(val column: Int, val row: Int) {}

@@ -1,7 +1,7 @@
-package edu.austral.dissis.chess.factory.rule
+package edu.austral.dissis.common.factory.rule
 
 import piece.PieceType
-import rule.Rule
+import edu.austral.dissis.common.rule.Rule
 
 interface RuleFactory {
     fun createRule(type: PieceType): Rule

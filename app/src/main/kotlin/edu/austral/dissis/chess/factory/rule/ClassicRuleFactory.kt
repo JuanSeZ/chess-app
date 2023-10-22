@@ -1,13 +1,13 @@
 package edu.austral.dissis.chess.factory.rule
 
-import edu.austral.dissis.chess.factory.rule.RuleFactory
+import edu.austral.dissis.common.factory.rule.RuleFactory
 import piece.PieceType
-import edu.austral.dissis.chess.rule.AndRule
+import edu.austral.dissis.common.rule.AndRule
 import edu.austral.dissis.chess.rule.ForwardDirectionRule
-import edu.austral.dissis.chess.rule.OrRule
+import edu.austral.dissis.common.rule.OrRule
 import edu.austral.dissis.chess.rule.piece.FirstMoveRule
 import edu.austral.dissis.chess.rule.piece.HasNotEnemyRule
-import rule.Rule
+import edu.austral.dissis.common.rule.Rule
 import rule.piece.HasEnemyRule
 import edu.austral.dissis.chess.rule.piece.obstacle.DiagonalObstacleRule
 import edu.austral.dissis.chess.rule.piece.obstacle.HorizontalObstacleRule

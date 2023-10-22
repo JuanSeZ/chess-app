@@ -1,4 +1,4 @@
-package edu.austral.dissis.chess.board
+package edu.austral.dissis.common.board
 
 import piece.Color
 

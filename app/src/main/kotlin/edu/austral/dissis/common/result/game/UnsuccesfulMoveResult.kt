@@ -1,4 +1,4 @@
-package edu.austral.dissis.chess.result.game
+package edu.austral.dissis.common.result.game
 
 import result.game.MoveResult
 

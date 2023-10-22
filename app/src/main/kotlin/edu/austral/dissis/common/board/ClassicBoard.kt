@@ -1,6 +1,6 @@
-import edu.austral.dissis.chess.board.Board
-import edu.austral.dissis.chess.board.Position
-import edu.austral.dissis.chess.piece.Piece
+import edu.austral.dissis.common.board.Board
+import edu.austral.dissis.common.board.Position
+import edu.austral.dissis.common.piece.Piece
 
 
 

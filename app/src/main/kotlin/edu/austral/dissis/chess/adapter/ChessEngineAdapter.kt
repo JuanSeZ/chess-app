@@ -1,14 +1,14 @@
 package edu.austral.dissis.chess.adapter
 
-import edu.austral.dissis.chess.board.Board
-import edu.austral.dissis.chess.board.Position
+import edu.austral.dissis.common.board.Board
+import edu.austral.dissis.common.board.Position
 import edu.austral.dissis.chess.gui.*
-import edu.austral.dissis.chess.result.game.EndGameResult
+import edu.austral.dissis.common.result.game.EndGameResult
 import edu.austral.dissis.chess.game.Game
 import piece.Color
 import piece.PieceType
-import edu.austral.dissis.chess.result.game.UnsuccesfulMoveResult
-import result.game.SuccesfulMoveResult
+import edu.austral.dissis.common.result.game.UnsuccesfulMoveResult
+import edu.austral.dissis.common.result.game.SuccesfulMoveResult
 
 class ChessEngineAdapter(var game: Game): GameEngine {
     override fun applyMove(move: Move): MoveResult {

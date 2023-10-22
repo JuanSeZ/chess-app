@@ -1,18 +1,16 @@
 package edu.austral.dissis.chess.game
 
-import edu.austral.dissis.chess.game.ClassicMoveResultHandler
-import edu.austral.dissis.chess.board.Board
-import edu.austral.dissis.chess.board.Move
-import edu.austral.dissis.chess.board.Position
-import edu.austral.dissis.chess.result.game.EndGameResult
+import edu.austral.dissis.common.board.Board
+import edu.austral.dissis.common.board.Move
+import edu.austral.dissis.common.board.Position
+import edu.austral.dissis.common.result.game.EndGameResult
 import piece.Color
 import result.game.MoveResult
-import edu.austral.dissis.chess.result.game.RuleViolationResult
-import edu.austral.dissis.chess.result.game.UnsuccesfulMoveResult
-import result.game.SuccesfulMoveResult
-import edu.austral.dissis.chess.result.validation.InvalidResult
-import edu.austral.dissis.chess.result.validation.ValidResult
-import rule.Rule
+import edu.austral.dissis.common.result.game.UnsuccesfulMoveResult
+import edu.austral.dissis.common.result.game.SuccesfulMoveResult
+import edu.austral.dissis.common.result.validation.InvalidResult
+import edu.austral.dissis.common.result.validation.ValidResult
+import edu.austral.dissis.common.rule.Rule
 
 
 class Game(
@@ -26,18 +24,20 @@ class Game(
         val globalValidationResult = validateGlobalRules(move)
         if (globalValidationResult is UnsuccesfulMoveResult) return globalValidationResult
         val pieceValidationResult = validatePieceRules(move)
-        if (pieceValidationResult !is SuccesfulMoveResult ) return pieceValidationResult
+        if (pieceValidationResult !is SuccesfulMoveResult) return pieceValidationResult
         val winningConditionResult = winningConditionRule.validate(Move(board.move(from,to),from,to,turn))
         if (winningConditionResult is InvalidResult) return EndGameResult(turn)
         return pieceValidationResult
     }
 
     private fun validatePieceRules(move: Move): MoveResult {
-        val piece = move.board.getPieceAt(move.from) ?: return RuleViolationResult()
+        val piece = move.board.getPieceAt(move.from) ?: return UnsuccesfulMoveResult("Piece not found!")
         return when (val result = piece.rule.validate(move)) {
             is ValidResult -> executeMove(move)
             is InvalidResult -> UnsuccesfulMoveResult(result.getMessage())
-            else -> RuleViolationResult()
+            else -> {
+                UnsuccesfulMoveResult("Something went wrong!")
+            }
         }
     }
 

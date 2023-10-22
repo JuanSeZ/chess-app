@@ -1,4 +1,4 @@
-package edu.austral.dissis.chess.result.validation
+package edu.austral.dissis.common.result.validation
 
 import result.validation.ValidationResult
 
