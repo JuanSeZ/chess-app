@@ -11,12 +11,12 @@ import edu.austral.dissis.chess.gui.DefaultImageResolver
 import edu.austral.dissis.chess.gui.GameView
 import edu.austral.dissis.chess.rule.game.CheckRule
 import edu.austral.dissis.chess.rule.game.CheckmateRule
-import edu.austral.dissis.chess.game.Game
+import edu.austral.dissis.common.game.Game
 import javafx.application.Application
 import javafx.application.Application.launch
 import javafx.scene.Scene
 import javafx.stage.Stage
-import piece.Color
+import edu.austral.dissis.common.piece.Color
 import edu.austral.dissis.chess.rule.game.FriendlyFireRule
 import edu.austral.dissis.chess.rule.game.NotYourTurnRule
 import start.ClassicStartingBoard

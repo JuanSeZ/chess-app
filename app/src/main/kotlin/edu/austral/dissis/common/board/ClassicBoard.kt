@@ -1,5 +1,5 @@
-import edu.austral.dissis.common.board.Board
-import edu.austral.dissis.common.board.Position
+package edu.austral.dissis.common.board
+
 import edu.austral.dissis.common.piece.Piece
 
 

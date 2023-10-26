@@ -1,7 +1,7 @@
 package edu.austral.dissis.chess.factory.rule
 
 import edu.austral.dissis.common.factory.rule.RuleFactory
-import piece.PieceType
+import edu.austral.dissis.common.piece.PieceType
 import edu.austral.dissis.common.rule.AndRule
 import edu.austral.dissis.chess.rule.ForwardDirectionRule
 import edu.austral.dissis.common.rule.OrRule

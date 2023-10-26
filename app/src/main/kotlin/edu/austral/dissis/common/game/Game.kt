@@ -1,11 +1,11 @@
-package edu.austral.dissis.chess.game
+package edu.austral.dissis.common.game
 
 import edu.austral.dissis.common.board.Board
 import edu.austral.dissis.common.board.Move
 import edu.austral.dissis.common.board.Position
 import edu.austral.dissis.common.result.game.EndGameResult
-import piece.Color
-import result.game.MoveResult
+import edu.austral.dissis.common.piece.Color
+import edu.austral.dissis.common.result.game.MoveResult
 import edu.austral.dissis.common.result.game.UnsuccesfulMoveResult
 import edu.austral.dissis.common.result.game.SuccesfulMoveResult
 import edu.austral.dissis.common.result.validation.InvalidResult
@@ -19,7 +19,7 @@ class Game(
     private val turn: Color,
     private val winningConditionRule: Rule
 ){
-    fun move(from: Position, to: Position): MoveResult{
+    fun move(from: Position, to: Position): MoveResult {
         val move = Move(board, from, to, turn)
         val globalValidationResult = validateGlobalRules(move)
         if (globalValidationResult is UnsuccesfulMoveResult) return globalValidationResult
@@ -42,7 +42,7 @@ class Game(
     }
 
 
-    private fun validateGlobalRules(move: Move): MoveResult{
+    private fun validateGlobalRules(move: Move): MoveResult {
         for (rule in globalRules){
             when(val result = rule.validate(move)){
                 is ValidResult -> continue

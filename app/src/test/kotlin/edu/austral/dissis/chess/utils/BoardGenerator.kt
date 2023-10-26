@@ -1,12 +1,12 @@
 package edu.austral.dissis.chess.utils
 
-import ClassicBoard
+import edu.austral.dissis.common.board.ClassicBoard
 import edu.austral.dissis.common.board.Board
 import edu.austral.dissis.common.board.Position
 import edu.austral.dissis.chess.factory.piece.ClassicPieceFactory
 import edu.austral.dissis.chess.factory.rule.ClassicRuleFactory
-import piece.Color
-import piece.PieceType
+import edu.austral.dissis.common.piece.Color
+import edu.austral.dissis.common.piece.PieceType
 
 fun pawnInCenter(): Board {
     val pieceFactory = ClassicPieceFactory(ClassicRuleFactory())

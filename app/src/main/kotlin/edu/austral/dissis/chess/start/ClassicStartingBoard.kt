@@ -1,12 +1,12 @@
 package start
 
-import ClassicBoard
+import edu.austral.dissis.common.board.ClassicBoard
 import edu.austral.dissis.common.board.Board
 import edu.austral.dissis.common.board.Position
 import edu.austral.dissis.chess.factory.piece.ClassicPieceFactory
 import edu.austral.dissis.common.start.StartingBoardGenerator
-import piece.Color
-import piece.PieceType
+import edu.austral.dissis.common.piece.Color
+import edu.austral.dissis.common.piece.PieceType
 
 class ClassicStartingBoard(private val classicPieceFactory: ClassicPieceFactory) : StartingBoardGenerator {
     override fun generate(): Board {

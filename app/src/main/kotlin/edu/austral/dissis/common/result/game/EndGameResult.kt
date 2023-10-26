@@ -1,7 +1,6 @@
 package edu.austral.dissis.common.result.game
 
-import piece.Color
-import result.game.MoveResult
+import edu.austral.dissis.common.piece.Color
 
 
 class EndGameResult(private val winner: Color) : MoveResult {

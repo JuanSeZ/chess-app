@@ -1,11 +1,11 @@
 package edu.austral.dissis.chess.start
 
-import ClassicBoard
+import edu.austral.dissis.common.board.ClassicBoard
 import edu.austral.dissis.common.board.Board
 import edu.austral.dissis.common.board.Position
 import edu.austral.dissis.common.factory.piece.PieceFactory
-import piece.Color
-import piece.PieceType
+import edu.austral.dissis.common.piece.Color
+import edu.austral.dissis.common.piece.PieceType
 import edu.austral.dissis.common.start.StartingBoardGenerator
 
 class AlternativeStartingBoard(private val classicPieceFactory: PieceFactory) : StartingBoardGenerator {

@@ -6,8 +6,8 @@ import edu.austral.dissis.common.board.Position
 import edu.austral.dissis.common.result.validation.InvalidResult
 import edu.austral.dissis.common.result.validation.ValidResult
 import edu.austral.dissis.chess.rule.utils.*
-import piece.Color
-import result.validation.ValidationResult
+import edu.austral.dissis.common.piece.Color
+import edu.austral.dissis.common.result.validation.ValidationResult
 import edu.austral.dissis.common.rule.Rule
 
 class CheckmateRule(private val globalRules: List<Rule>) : Rule {
