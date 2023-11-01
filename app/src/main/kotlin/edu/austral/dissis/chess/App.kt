@@ -19,7 +19,7 @@ import javafx.stage.Stage
 import edu.austral.dissis.common.piece.Color
 import edu.austral.dissis.chess.rule.game.FriendlyFireRule
 import edu.austral.dissis.chess.rule.game.NotYourTurnRule
-import start.ClassicStartingBoard
+import edu.austral.dissis.chess.start.ClassicStartingBoard
 
 
 fun main() {
