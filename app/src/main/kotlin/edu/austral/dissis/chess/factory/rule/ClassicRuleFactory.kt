@@ -20,13 +20,15 @@ import edu.austral.dissis.chess.rule.piece.quantity.LimitedQuantityRule
 
 class ClassicRuleFactory: RuleFactory {
     override fun createRule(type: PieceType): Rule {
-        return when (type) {
-            PieceType.PAWN -> classicPawnRule()
-            PieceType.ROOK -> classicRookRule()
-            PieceType.KNIGHT -> classicKnightRule()
-            PieceType.BISHOP -> classicBishopRule()
-            PieceType.QUEEN -> classicQueenRule()
-            PieceType.KING -> classicKingRule()
+        return when (type.getValue()) {
+            "pawn" -> classicPawnRule()
+            "rook" -> classicRookRule()
+            "knight" -> classicKnightRule()
+            "bishop" -> classicBishopRule()
+            "queen" -> classicQueenRule()
+            "king" -> classicKingRule()
+            else -> {
+                throw RuntimeException("Piece type not found")}
         }
     }
 

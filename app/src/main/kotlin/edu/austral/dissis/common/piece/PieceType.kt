@@ -1,3 +1,5 @@
 package edu.austral.dissis.common.piece
 
-interface  PieceType {}
+interface  PieceType {
+    fun getValue(): String;
+}

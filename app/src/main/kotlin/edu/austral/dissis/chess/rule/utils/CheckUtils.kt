@@ -43,7 +43,7 @@ fun getKingPosition(board: Board, turn: Color): Position? {
     val positions = board.getOccupiedPositions()
     for (position in positions) {
         val piece = board.getPieceAt(position) ?: throw NoSuchElementException("No piece found")
-        if (piece.type == PieceType.KING && piece.color == turn) return position
+        if (piece.type.getValue() == "king" && piece.color == turn) return position
     }
     return null
 }
