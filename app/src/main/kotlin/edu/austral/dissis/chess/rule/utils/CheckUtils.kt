@@ -5,7 +5,6 @@ import edu.austral.dissis.common.board.Move
 import edu.austral.dissis.common.board.Position
 import edu.austral.dissis.common.result.validation.InvalidResult
 import edu.austral.dissis.common.piece.Color
-import edu.austral.dissis.common.piece.PieceType
 import edu.austral.dissis.common.result.validation.ValidResult
 import edu.austral.dissis.common.rule.Rule
 

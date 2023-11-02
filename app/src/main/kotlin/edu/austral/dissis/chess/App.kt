@@ -3,7 +3,7 @@
  */
 package edu.austral.dissis.chess
 
-import edu.austral.dissis.chess.adapter.ChessEngineAdapter
+import edu.austral.dissis.common.adapter.ChessEngineAdapter
 import edu.austral.dissis.chess.factory.piece.ClassicPieceFactory
 import edu.austral.dissis.chess.factory.rule.ClassicRuleFactory
 import edu.austral.dissis.chess.gui.CachedImageResolver
