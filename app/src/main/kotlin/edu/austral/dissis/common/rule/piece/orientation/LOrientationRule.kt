@@ -1,4 +1,4 @@
-package edu.austral.dissis.chess.rule.piece.orientation
+package edu.austral.dissis.common.rule.piece.orientation
 
 import edu.austral.dissis.common.board.Move
 import edu.austral.dissis.common.result.validation.InvalidResult

@@ -3,30 +3,32 @@ package edu.austral.dissis.chess.factory.rule
 import edu.austral.dissis.common.factory.rule.RuleFactory
 import edu.austral.dissis.common.piece.PieceType
 import edu.austral.dissis.common.rule.AndRule
-import edu.austral.dissis.chess.rule.ForwardDirectionRule
+import edu.austral.dissis.common.rule.piece.ForwardDirectionRule
 import edu.austral.dissis.common.rule.OrRule
-import edu.austral.dissis.chess.rule.piece.FirstMoveRule
-import edu.austral.dissis.chess.rule.piece.HasNotEnemyRule
+import edu.austral.dissis.common.rule.piece.FirstMoveRule
+import edu.austral.dissis.common.rule.piece.HasNotEnemyRule
 import edu.austral.dissis.common.rule.Rule
 import rule.piece.HasEnemyRule
-import edu.austral.dissis.chess.rule.piece.obstacle.DiagonalObstacleRule
-import edu.austral.dissis.chess.rule.piece.obstacle.HorizontalObstacleRule
-import edu.austral.dissis.chess.rule.piece.obstacle.VerticalObstacleRule
-import edu.austral.dissis.chess.rule.piece.orientation.DiagonalOrientationRule
+import edu.austral.dissis.common.rule.piece.obstacle.DiagonalObstacleRule
+import edu.austral.dissis.common.rule.piece.obstacle.HorizontalObstacleRule
+import edu.austral.dissis.common.rule.piece.obstacle.VerticalObstacleRule
+import edu.austral.dissis.common.rule.piece.orientation.DiagonalOrientationRule
 import rule.piece.orientation.HorizontalOrientationRule
-import edu.austral.dissis.chess.rule.piece.orientation.LOrientationRule
+import edu.austral.dissis.common.rule.piece.orientation.LOrientationRule
 import rule.piece.orientation.VerticalOrientationRule
-import edu.austral.dissis.chess.rule.piece.quantity.LimitedQuantityRule
+import edu.austral.dissis.common.rule.piece.quantity.LimitedQuantityRule
 
 class ClassicRuleFactory: RuleFactory {
     override fun createRule(type: PieceType): Rule {
-        return when (type) {
-            PieceType.PAWN -> classicPawnRule()
-            PieceType.ROOK -> classicRookRule()
-            PieceType.KNIGHT -> classicKnightRule()
-            PieceType.BISHOP -> classicBishopRule()
-            PieceType.QUEEN -> classicQueenRule()
-            PieceType.KING -> classicKingRule()
+        return when (type.getValue()) {
+            "pawn" -> classicPawnRule()
+            "rook" -> classicRookRule()
+            "knight" -> classicKnightRule()
+            "bishop" -> classicBishopRule()
+            "queen" -> classicQueenRule()
+            "king" -> classicKingRule()
+            else -> {
+                throw RuntimeException("Piece type not found")}
         }
     }
 
@@ -34,11 +36,18 @@ class ClassicRuleFactory: RuleFactory {
         return OrRule(
             listOf(
                 AndRule(
-                    listOf(LimitedQuantityRule(1),VerticalOrientationRule(), VerticalObstacleRule(),HasNotEnemyRule(),ForwardDirectionRule()))
+                    listOf(
+                        LimitedQuantityRule(1),VerticalOrientationRule(), VerticalObstacleRule(),
+                        HasNotEnemyRule(), ForwardDirectionRule()
+                    ))
                 , AndRule(
-                    listOf(LimitedQuantityRule(1), DiagonalOrientationRule(),HasEnemyRule(),ForwardDirectionRule()))
+                    listOf(LimitedQuantityRule(1), DiagonalOrientationRule(),HasEnemyRule(), ForwardDirectionRule()))
                 , AndRule(
-                    listOf(LimitedQuantityRule(2), VerticalOrientationRule(), VerticalObstacleRule(),FirstMoveRule(),ForwardDirectionRule(),HasNotEnemyRule()))
+                    listOf(
+                        LimitedQuantityRule(2), VerticalOrientationRule(), VerticalObstacleRule(),
+                        FirstMoveRule(), ForwardDirectionRule(),
+                        HasNotEnemyRule()
+                    ))
             ))
     }
 

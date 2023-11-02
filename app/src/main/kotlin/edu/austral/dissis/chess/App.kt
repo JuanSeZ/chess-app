@@ -3,7 +3,7 @@
  */
 package edu.austral.dissis.chess
 
-import edu.austral.dissis.chess.adapter.ChessEngineAdapter
+import edu.austral.dissis.common.adapter.ChessEngineAdapter
 import edu.austral.dissis.chess.factory.piece.ClassicPieceFactory
 import edu.austral.dissis.chess.factory.rule.ClassicRuleFactory
 import edu.austral.dissis.chess.gui.CachedImageResolver
@@ -19,7 +19,7 @@ import javafx.stage.Stage
 import edu.austral.dissis.common.piece.Color
 import edu.austral.dissis.chess.rule.game.FriendlyFireRule
 import edu.austral.dissis.chess.rule.game.NotYourTurnRule
-import start.ClassicStartingBoard
+import edu.austral.dissis.chess.start.ClassicStartingBoard
 
 
 fun main() {

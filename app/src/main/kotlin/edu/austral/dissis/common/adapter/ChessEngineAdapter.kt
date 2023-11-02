@@ -1,4 +1,4 @@
-package edu.austral.dissis.chess.adapter
+package edu.austral.dissis.common.adapter
 
 import edu.austral.dissis.common.board.Board
 import edu.austral.dissis.common.board.Position
@@ -6,7 +6,6 @@ import edu.austral.dissis.chess.gui.*
 import edu.austral.dissis.common.result.game.EndGameResult
 import edu.austral.dissis.common.game.Game
 import edu.austral.dissis.common.piece.Color
-import edu.austral.dissis.common.piece.PieceType
 import edu.austral.dissis.common.result.game.UnsuccesfulMoveResult
 import edu.austral.dissis.common.result.game.SuccesfulMoveResult
 
@@ -55,14 +54,7 @@ class ChessEngineAdapter(var game: Game): GameEngine {
                 Color.WHITE -> PlayerColor.WHITE
                 Color.BLACK -> PlayerColor.BLACK
             }
-            val type = when (piece.type) {
-                PieceType.PAWN -> "pawn"
-                PieceType.ROOK -> "rook"
-                PieceType.KNIGHT -> "knight"
-                PieceType.BISHOP -> "bishop"
-                PieceType.QUEEN -> "queen"
-                PieceType.KING -> "king"
-            }
+            val type = piece.type.getValue()
             val coordinate = edu.austral.dissis.chess.gui.Position(position.row, position.column)
 
             ChessPiece(piece.getId(),color,coordinate,type)

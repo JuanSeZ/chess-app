@@ -5,7 +5,6 @@ import edu.austral.dissis.common.board.Move
 import edu.austral.dissis.common.board.Position
 import edu.austral.dissis.common.result.validation.InvalidResult
 import edu.austral.dissis.common.piece.Color
-import edu.austral.dissis.common.piece.PieceType
 import edu.austral.dissis.common.result.validation.ValidResult
 import edu.austral.dissis.common.rule.Rule
 
@@ -43,7 +42,7 @@ fun getKingPosition(board: Board, turn: Color): Position? {
     val positions = board.getOccupiedPositions()
     for (position in positions) {
         val piece = board.getPieceAt(position) ?: throw NoSuchElementException("No piece found")
-        if (piece.type == PieceType.KING && piece.color == turn) return position
+        if (piece.type.getValue() == "king" && piece.color == turn) return position
     }
     return null
 }
