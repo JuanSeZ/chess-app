@@ -6,6 +6,8 @@ package edu.austral.dissis.chess
 import edu.austral.dissis.common.adapter.ChessEngineAdapter
 import edu.austral.dissis.chess.factory.piece.ClassicPieceFactory
 import edu.austral.dissis.chess.factory.rule.ClassicRuleFactory
+import edu.austral.dissis.chess.game.ChessExecutioner
+import edu.austral.dissis.chess.game.ChessTurnManager
 import edu.austral.dissis.chess.gui.CachedImageResolver
 import edu.austral.dissis.chess.gui.DefaultImageResolver
 import edu.austral.dissis.chess.gui.GameView
@@ -36,6 +38,8 @@ class ChessGameApplication : Application() {
         Game(
             ClassicStartingBoard(ClassicPieceFactory(ClassicRuleFactory())).generate(),
             globalRules,
+            ChessExecutioner(),
+            ChessTurnManager(),
             Color.WHITE,
             CheckmateRule(globalRules),
         )

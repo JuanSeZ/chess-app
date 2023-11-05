@@ -16,6 +16,8 @@ import edu.austral.dissis.common.rule.Rule
 class Game(
     private var board: Board,
     private val globalRules: List<Rule>,
+    private val executioner: MoveExecutioner,
+    private val turnManager: TurnManager,
     private val turn: Color,
     private val winningConditionRule: Rule
 ){
@@ -53,15 +55,8 @@ class Game(
     }
 
     private fun executeMove(move: Move): MoveResult {
-        val newBoard = move.board.move(move.from, move.to)
-        return SuccesfulMoveResult(Game(newBoard, globalRules, getOppositeTurn(), winningConditionRule))
-    }
-
-    private fun getOppositeTurn(): Color {
-        return when (turn) {
-            Color.WHITE -> Color.BLACK
-            Color.BLACK -> Color.WHITE
-        }
+        val newBoard = executioner.executeMove(move)
+        return SuccesfulMoveResult(Game(newBoard, globalRules, executioner,turnManager, turnManager.nextTurn(move), winningConditionRule))
     }
 
     fun getBoard(): Board {
@@ -71,4 +66,13 @@ class Game(
     fun getTurn(): Color {
         return turn
     }
+
+    fun getGlobalRules(): List<Rule> {
+        return globalRules
+    }
+
+    fun getWinningConditionRule(): Rule {
+        return winningConditionRule
+    }
+
 }
