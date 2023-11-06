@@ -9,5 +9,6 @@ interface Board {
     fun getColumnsSize(): Int
     fun getRowsSize(): Int
     fun getOccupiedPositions(): List<Position>
+    fun removePiece(position: Position): Board
 }
 

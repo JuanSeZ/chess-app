@@ -1,12 +1,15 @@
 package edu.austral.dissis.checkers.game
 
+import edu.austral.dissis.checkers.utils.isCapture
 import edu.austral.dissis.common.board.Board
 import edu.austral.dissis.common.board.Move
+import edu.austral.dissis.common.board.Position
 import edu.austral.dissis.common.game.MoveExecutioner
+
 
 class CheckersExecutioner: MoveExecutioner {
     override fun executeMove(move: Move): Board {
-        if(isCapture()){
+        if(isCapture(move)){
             return capture(move)
         }
         return normalMove(move)
@@ -17,12 +20,17 @@ class CheckersExecutioner: MoveExecutioner {
     }
 
     private fun capture(move: Move): Board {
-//        Move the piece to the new position and remove the piece in between them
-        TODO()
-    }
+        val from = move.from
+        val to = move.to
 
-    private fun isCapture(): Boolean {
-        TODO()
-        return false
+        val rowDirection = if (to.row > from.row) 1 else -1
+        val colDirection = if (to.column > from.column) 1 else -1
+
+        var currentRow = from.row + rowDirection
+        var currentCol = from.column + colDirection
+
+        val currentPosition = Position(currentCol, currentRow)
+
+        return move.board.move(move.from, move.to).removePiece(currentPosition)
     }
 }

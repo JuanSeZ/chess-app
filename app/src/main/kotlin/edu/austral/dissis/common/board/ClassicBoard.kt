@@ -35,4 +35,8 @@ class ClassicBoard(private val xSize: Int,private val ySize: Int,private val pos
     override fun getOccupiedPositions(): List<Position> {
         return positions.keys.toList()
     }
+
+    override fun removePiece(position: Position): Board {
+        return ClassicBoard(xSize, ySize, positions - position)
+    }
 }
