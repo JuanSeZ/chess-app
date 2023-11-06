@@ -3,12 +3,12 @@ package edu.austral.dissis.chess.start
 import edu.austral.dissis.common.board.ClassicBoard
 import edu.austral.dissis.common.board.Board
 import edu.austral.dissis.common.board.Position
-import edu.austral.dissis.chess.factory.piece.ClassicPieceFactory
 import edu.austral.dissis.common.start.StartingBoardGenerator
 import edu.austral.dissis.common.piece.Color
 import edu.austral.dissis.chess.piece.ChessPieceType
+import edu.austral.dissis.common.factory.piece.PieceFactory
 
-class ClassicStartingBoard(private val classicPieceFactory: ClassicPieceFactory) : StartingBoardGenerator {
+class ClassicStartingBoard(private val classicPieceFactory: PieceFactory) : StartingBoardGenerator {
         override fun generate(): Board {
                 return ClassicBoard(8, 8, mapOf(
                         Pair(Position(1, 1), classicPieceFactory.createPiece(ChessPieceType.ROOK, Color.BLACK)),

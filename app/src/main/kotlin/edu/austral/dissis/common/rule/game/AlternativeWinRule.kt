@@ -1,11 +1,11 @@
-package edu.austral.dissis.chess.rule.game
+package edu.austral.dissis.common.rule.game
 
 import edu.austral.dissis.common.board.Board
 import edu.austral.dissis.common.board.Move
 import edu.austral.dissis.common.board.Position
+import edu.austral.dissis.common.piece.Color
 import edu.austral.dissis.common.result.validation.InvalidResult
 import edu.austral.dissis.common.result.validation.ValidResult
-import edu.austral.dissis.common.piece.Color
 import edu.austral.dissis.common.result.validation.ValidationResult
 import edu.austral.dissis.common.rule.Rule
 
