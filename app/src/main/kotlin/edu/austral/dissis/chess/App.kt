@@ -19,8 +19,8 @@ import javafx.application.Application.launch
 import javafx.scene.Scene
 import javafx.stage.Stage
 import edu.austral.dissis.common.piece.Color
-import edu.austral.dissis.chess.rule.game.FriendlyFireRule
-import edu.austral.dissis.chess.rule.game.NotYourTurnRule
+import edu.austral.dissis.common.rule.game.FriendlyFireRule
+import edu.austral.dissis.common.rule.game.NotYourTurnRule
 import edu.austral.dissis.chess.start.ClassicStartingBoard
 
 

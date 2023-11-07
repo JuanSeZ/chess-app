@@ -16,9 +16,9 @@ class ShouldCaptureRule: Rule {
 
 
     override fun validate(move: Move): ValidationResult {
-        if (lastMoveWasCapture(move) && isPossibleToCapture(move) && isCapture(move)) {
-            return ValidResult
+        if (move.history.isNotEmpty() && lastMoveWasCapture(move) && isPossibleToCapture(move) && !isCapture(move)) {
+            return InvalidResult("You must capture a piece")
         }
-        return InvalidResult("You must capture a piece")
+        return ValidResult
     }
 }
