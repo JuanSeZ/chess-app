@@ -5,12 +5,9 @@ import edu.austral.dissis.common.game.TurnManager
 import edu.austral.dissis.common.piece.Color
 
 class ChessTurnManager: TurnManager {
-    override fun nextTurn(move: Move): Color {
-        move.board.getBoard()[move.from]?.let {
-            if(it.color == Color.WHITE) {
-                return Color.BLACK
-            }
-        }
+    override fun nextTurn(moves: List<Move>): Color {
+        if (moves.last().turn == Color.WHITE)
+            return Color.BLACK
         return Color.WHITE
     }
 

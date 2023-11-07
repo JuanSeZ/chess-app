@@ -23,3 +23,20 @@ fun isCapture(move: Move): Boolean {
     return piece != null && piece.color != move.turn
 
 }
+
+fun isPossibleToCapture(move: Move): Boolean {
+    return when (move.board.getBoard()[move.from]?.type?.getValue()){
+        "pawn" -> isPossibleToCapturePawn(move)
+        "king" -> isPossibleToCaptureKing(move) && isPossibleToCapturePawn(move)
+        else -> false
+    }
+
+}
+
+private fun isPossibleToCaptureKing(move: Move): Boolean {
+    TODO("Not yet implemented")
+}
+
+private fun isPossibleToCapturePawn(move: Move): Boolean {
+    TODO("Not yet implemented")
+}

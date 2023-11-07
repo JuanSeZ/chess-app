@@ -4,5 +4,5 @@ import edu.austral.dissis.common.board.Move
 import edu.austral.dissis.common.piece.Color
 
 interface TurnManager {
-    fun nextTurn(move: Move): Color
+    fun nextTurn(moves: List<Move>): Color
 }

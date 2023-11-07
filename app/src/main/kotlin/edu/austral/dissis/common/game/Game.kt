@@ -19,10 +19,11 @@ class Game(
     private val executioner: MoveExecutioner,
     private val turnManager: TurnManager,
     private val turn: Color,
-    private val winningConditionRule: Rule
+    private val winningConditionRule: Rule,
+    private val history: List<Move> = emptyList()
 ){
     fun move(from: Position, to: Position): MoveResult {
-        val move = Move(board, from, to, turn)
+        val move = Move(board, from, to, turn, history)
         val globalValidationResult = validateGlobalRules(move)
         if (globalValidationResult is UnsuccesfulMoveResult) return globalValidationResult
         val pieceValidationResult = validatePieceRules(move)
@@ -56,7 +57,8 @@ class Game(
 
     private fun executeMove(move: Move): MoveResult {
         val newBoard = executioner.executeMove(move)
-        return SuccesfulMoveResult(Game(newBoard, globalRules, executioner,turnManager, turnManager.nextTurn(move), winningConditionRule))
+        val newHistory = history + move
+        return SuccesfulMoveResult(Game(newBoard, globalRules, executioner,turnManager, turnManager.nextTurn(newHistory), winningConditionRule, newHistory))
     }
 
     fun getBoard(): Board {
