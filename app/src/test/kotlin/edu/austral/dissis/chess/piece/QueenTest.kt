@@ -1,11 +1,13 @@
 package edu.austral.dissis.chess.piece
 
+import edu.austral.dissis.checkers.game.CheckersTurnManager
+import edu.austral.dissis.chess.game.ChessExecutioner
 import edu.austral.dissis.common.board.Position
 import edu.austral.dissis.chess.utils.blackQueenInPlace
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
 import edu.austral.dissis.common.result.game.SuccesfulMoveResult
-import edu.austral.dissis.chess.utils.generateTestGame
+import edu.austral.dissis.common.generateTestGame
 import edu.austral.dissis.chess.utils.queenInCenter
 
 class QueenTest {
@@ -14,6 +16,8 @@ class QueenTest {
         // Given
         val game = generateTestGame(
             queenInCenter(),
+            ChessExecutioner(),
+            CheckersTurnManager(),
             listOf()
         )
         assertTrue(game.move(Position(4,4), Position(5,5)) is SuccesfulMoveResult)
@@ -24,6 +28,8 @@ class QueenTest {
     fun `should move vertically and horizontally`() {
         val game = generateTestGame(
             queenInCenter(),
+            ChessExecutioner(),
+            CheckersTurnManager(),
             listOf()
         )
         assertTrue(game.move(Position(4,4), Position(4,8)) is SuccesfulMoveResult)
@@ -34,6 +40,8 @@ class QueenTest {
     fun `should multiple diagonal`(){
         val game = generateTestGame(
             blackQueenInPlace(),
+            ChessExecutioner(),
+            CheckersTurnManager(),
             listOf()
         )
         assertTrue(game.move(Position(4,1), Position(8,5)) is SuccesfulMoveResult)

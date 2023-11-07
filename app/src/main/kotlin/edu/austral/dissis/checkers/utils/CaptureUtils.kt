@@ -31,49 +31,42 @@ fun isPossibleToCapture(move: Move): Boolean {
 }
 
 private fun isPossibleToCaptureKing(move: Move): Boolean {
-    val orientation = if (move.board.getBoard()[move.from]?.color == Color.WHITE) -1 else 1
-    val from = move.from
-
-//    Verify left backwards
-    if (from.row - 2 * orientation >= 0 && from.column - 2 * orientation >= 0) {
-        val currentPosition = Position(from.column - 2 * orientation, from.row - 2 * orientation)
-        val piece = move.board.getPieceAt(currentPosition)
-        if (piece != null && piece.color != move.turn && move.board.getPieceAt(Position(from.column - orientation, from.row - orientation)) == null) {
-            return true
-        }
-    }
-
-//    Verify right backwards
-    if (from.row - 2 * orientation >= 0 && from.column + 2 * orientation <= 7) {
-        val currentPosition = Position(from.column + 2 * orientation, from.row - 2 * orientation)
-        val piece = move.board.getPieceAt(currentPosition)
-        if (piece != null && piece.color != move.turn && move.board.getPieceAt(Position(from.column + orientation, from.row - orientation)) == null) {
-            return true
-        }
-    }
-    return false
-}
-
-private fun isPossibleToCapturePawn(move: Move): Boolean {
+//    TODO() Verify
     val orientation = if (move.board.getBoard()[move.from]?.color == Color.WHITE) 1 else -1
     val from = move.from
 
-//    Verify left forward
-    if (from.row + 2 * orientation <= move.board.getRowsSize() && from.column - 2 * orientation >= 0) {
-        val currentPosition = Position(from.column - 2 * orientation, from.row + 2 * orientation)
-        val piece = move.board.getPieceAt(currentPosition)
-        if (piece != null && piece.color != move.turn && move.board.getPieceAt(Position(from.column - orientation, from.row + orientation)) == null) {
-            return true
-        }
+//    Verify left
+    val possibleLeft = Position(from.column - 2 , from.row + 2 * orientation)
+    val possibleLeftMove = Move(move.board, from, possibleLeft, move.turn)
+    if(isCapture(possibleLeftMove)){
+        return true
     }
 
-//    Verify right forward
-    if (from.row + 2 * orientation <= move.board.getRowsSize() && from.column + 2 * orientation <= 7) {
-        val currentPosition = Position(from.column + 2 * orientation, from.row + 2 * orientation)
-        val piece = move.board.getPieceAt(currentPosition)
-        if (piece != null && piece.color != move.turn && move.board.getPieceAt(Position(from.column + orientation, from.row + orientation)) == null) {
-            return true
-        }
+//    Verify right
+    val possibleRight = Position(from.column + 2 , from.row + 2 * orientation)
+    val possibleRightMove = Move(move.board, from, possibleRight, move.turn)
+
+    return isCapture(possibleRightMove)
+
+}
+
+private fun isPossibleToCapturePawn(move: Move): Boolean {
+    val orientation = if (move.board.getBoard()[move.from]?.color == Color.WHITE) -1 else 1
+    val from = move.from
+
+//    Verify left
+    val possibleLeft = Position(from.column - 2 , from.row + 2 * orientation)
+    val possibleLeftMove = Move(move.board, from, possibleLeft, move.turn)
+    if(isCapture(possibleLeftMove)){
+        return true
     }
-    return false
+
+//    Verify right
+    val possibleRight = Position(from.column + 2 , from.row + 2 * orientation)
+    val possibleRightMove = Move(move.board, from, possibleRight, move.turn)
+
+    return isCapture(possibleRightMove)
+}
+fun lastMoveWasCapture(move: Move): Boolean {
+    return isCapture(move.history.last())
 }

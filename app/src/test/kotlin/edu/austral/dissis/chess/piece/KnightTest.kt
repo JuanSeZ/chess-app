@@ -1,10 +1,12 @@
 package edu.austral.dissis.chess.piece
 
+import edu.austral.dissis.checkers.game.CheckersTurnManager
+import edu.austral.dissis.chess.game.ChessExecutioner
 import edu.austral.dissis.common.board.Position
 import org.junit.jupiter.api.Assertions.assertTrue
 import org.junit.jupiter.api.Test
 import edu.austral.dissis.common.result.game.SuccesfulMoveResult
-import edu.austral.dissis.chess.utils.generateTestGame
+import edu.austral.dissis.common.generateTestGame
 import edu.austral.dissis.chess.utils.knightInCenter
 import edu.austral.dissis.chess.utils.knightInCenterWithEnemyInL
 
@@ -15,6 +17,8 @@ class KnightTest {
         // Given
         val game = generateTestGame(
             knightInCenter(),
+            ChessExecutioner(),
+            CheckersTurnManager(),
             listOf()
         )
 
@@ -32,6 +36,8 @@ class KnightTest {
     fun `eats in L`() {
         val game = generateTestGame(
             knightInCenterWithEnemyInL(),
+            ChessExecutioner(),
+            CheckersTurnManager(),
             listOf()
         )
 

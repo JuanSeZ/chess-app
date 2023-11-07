@@ -8,6 +8,7 @@ import edu.austral.dissis.checkers.factory.CheckersPieceFactory
 import edu.austral.dissis.checkers.factory.CheckersRuleFactory
 import edu.austral.dissis.checkers.game.CheckersExecutioner
 import edu.austral.dissis.checkers.game.CheckersTurnManager
+import edu.austral.dissis.checkers.rule.SamePawnShouldMoveRule
 import edu.austral.dissis.checkers.rule.ShouldCaptureRule
 import edu.austral.dissis.checkers.start.CheckersStartingBoard
 import edu.austral.dissis.common.adapter.ChessEngineAdapter
@@ -34,7 +35,8 @@ class CheckersGameApplication : Application() {
     private val globalRules = listOf(
         FriendlyFireRule(),
         NotYourTurnRule(),
-        ShouldCaptureRule()
+        ShouldCaptureRule(),
+        SamePawnShouldMoveRule()
     )
     private val gameEngine = ChessEngineAdapter(
         Game(
