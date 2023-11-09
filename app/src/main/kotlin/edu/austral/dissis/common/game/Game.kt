@@ -69,6 +69,10 @@ class Game(
         return turn
     }
 
+    fun getNextTurn(): Color {
+        return turnManager.nextTurn(history)
+    }
+
     fun getGlobalRules(): List<Rule> {
         return globalRules
     }

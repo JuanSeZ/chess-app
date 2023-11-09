@@ -11,9 +11,12 @@ import edu.austral.dissis.common.rule.Rule
 
 class ShouldCaptureRule: Rule {
 
-
-
     override fun validate(move: Move): ValidationResult {
+        if (move.history.isNotEmpty()){
+            println("Last move was capture: ${lastMoveWasCapture(move)}")
+            println("Is possible to capture: ${isPossibleToCapture(move)}")
+            println("Is capture: ${isCapture(move)}")
+        }
         if (move.history.isNotEmpty() && lastMoveWasCapture(move) && isPossibleToCapture(move) && !isCapture(move)) {
             return InvalidResult("You must capture a piece")
         }

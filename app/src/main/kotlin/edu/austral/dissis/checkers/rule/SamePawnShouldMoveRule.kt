@@ -10,19 +10,11 @@ import edu.austral.dissis.common.rule.Rule
 
 class SamePawnShouldMoveRule : Rule {
     private fun isNotSamePawn(move: Move): Boolean {
-        return move.board.getPieceAt(move.from) != move.history.last().board.getPieceAt(move.from)
+        return move.from != move.history.last().to && move.history.last().turn == move.turn
     }
 
     override fun validate(move: Move): ValidationResult {
-        if(move.history.isNotEmpty()) {
-            println("Last move was capture")
-            println(lastMoveWasCapture(move))
-            println("Is possible to capture")
-            println(isPossibleToCapture(move))
-            println("Is not same pawn")
-            println(this.isNotSamePawn(move))
-        }
-        if(move.history.isNotEmpty() && lastMoveWasCapture(move) && isPossibleToCapture(move) && this.isNotSamePawn(move)) {
+        if(move.history.isNotEmpty() && lastMoveWasCapture(move) && isPossibleToCapture(move) && this.isNotSamePawn(move) ) {
             return InvalidResult("You must use the same pawn to capture")
         }
         return ValidResult

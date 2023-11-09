@@ -15,6 +15,8 @@ class CheckersExecutioner: MoveExecutioner {
         return normalMove(move)
     }
 
+
+
     private fun normalMove(move: Move): Board {
         return move.board.move(move.from, move.to)
     }

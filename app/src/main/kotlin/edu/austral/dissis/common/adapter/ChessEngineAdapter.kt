@@ -47,7 +47,8 @@ class ChessEngineAdapter(var game: Game): GameEngine {
         }
     }
 
-    private fun convertToChessPieces(positions: List<Position>, board: Board): List<ChessPiece> {
+}
+     fun convertToChessPieces(positions: List<Position>, board: Board): List<ChessPiece> {
         return positions.map { position ->
             val piece = board.getPieceAt(position)!!
             val color = when (piece.color) {
@@ -60,4 +61,3 @@ class ChessEngineAdapter(var game: Game): GameEngine {
             ChessPiece(piece.getId(),color,coordinate,type)
         }
     }
-}

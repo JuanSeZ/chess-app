@@ -11,6 +11,7 @@ import edu.austral.dissis.chess.game.ChessTurnManager
 import edu.austral.dissis.chess.gui.CachedImageResolver
 import edu.austral.dissis.chess.gui.DefaultImageResolver
 import edu.austral.dissis.chess.gui.GameView
+import edu.austral.dissis.chess.gui.createGameViewFrom
 import edu.austral.dissis.chess.rule.game.CheckRule
 import edu.austral.dissis.chess.rule.game.CheckmateRule
 import edu.austral.dissis.common.game.Game
@@ -53,7 +54,7 @@ class ChessGameApplication : Application() {
     override fun start(primaryStage: Stage) {
         primaryStage.title = GameTitle
 
-        val root = GameView(gameEngine, imageResolver)
+        val root = createGameViewFrom(gameEngine, imageResolver)
         primaryStage.scene = Scene(root)
 
         primaryStage.show()

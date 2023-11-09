@@ -21,3 +21,27 @@ fun pawnInCenterWithEnemyDiagonal():Board {
         )
     )
 }
+
+
+fun pawnInCenterWithTwoEnemyDiagonal():Board {
+    val checkersPieceFactory = CheckersPieceFactory(CheckersRuleFactory())
+    return ClassicBoard(
+        8,8,
+        mapOf(
+            Position(4,4) to checkersPieceFactory.createPiece(CheckersPieceType.PAWN, Color.WHITE),
+            Position(5,5) to checkersPieceFactory.createPiece(CheckersPieceType.PAWN, Color.BLACK),
+            Position(6,6) to checkersPieceFactory.createPiece(CheckersPieceType.PAWN, Color.BLACK),
+    )
+    )
+}
+
+fun pawnInCenterWithEnemyTwoBlocksAwayDiagonal():Board {
+    val checkersPieceFactory = CheckersPieceFactory(CheckersRuleFactory())
+    return ClassicBoard(
+        8,8,
+        mapOf(
+            Position(4,4) to checkersPieceFactory.createPiece(CheckersPieceType.PAWN, Color.WHITE),
+            Position(6,6) to checkersPieceFactory.createPiece(CheckersPieceType.PAWN, Color.BLACK),
+        )
+    )
+}
