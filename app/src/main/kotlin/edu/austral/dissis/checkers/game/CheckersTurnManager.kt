@@ -8,7 +8,6 @@ import edu.austral.dissis.common.piece.Color
 
 class CheckersTurnManager : TurnManager {
     override fun nextTurn(moves: List<Move>): Color {
-//        println("Next move is possible to capture: ${nextMoveIsPossibleToCapture(moves)}")
         if(isCapture(moves.last()) && nextMoveIsPossibleToCapture(moves))
             return moves.last().turn
 

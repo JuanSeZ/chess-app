@@ -8,13 +8,13 @@ import edu.austral.dissis.checkers.factory.CheckersPieceFactory
 import edu.austral.dissis.checkers.factory.CheckersRuleFactory
 import edu.austral.dissis.checkers.game.CheckersExecutioner
 import edu.austral.dissis.checkers.game.CheckersTurnManager
-import edu.austral.dissis.checkers.rule.SamePawnShouldMoveRule
 import edu.austral.dissis.checkers.rule.ShouldCaptureRule
 import edu.austral.dissis.checkers.start.CheckersStartingBoard
 import edu.austral.dissis.common.adapter.ChessEngineAdapter
 import edu.austral.dissis.chess.gui.CachedImageResolver
 import edu.austral.dissis.chess.gui.DefaultImageResolver
 import edu.austral.dissis.chess.gui.GameView
+import edu.austral.dissis.chess.gui.createGameViewFrom
 import edu.austral.dissis.common.game.Game
 import javafx.application.Application
 import javafx.application.Application.launch
@@ -35,8 +35,7 @@ class CheckersGameApplication : Application() {
     private val globalRules = listOf(
         FriendlyFireRule(),
         NotYourTurnRule(),
-        ShouldCaptureRule(),
-        SamePawnShouldMoveRule()
+        ShouldCaptureRule()
     )
     private val gameEngine = ChessEngineAdapter(
         Game(
@@ -57,7 +56,7 @@ class CheckersGameApplication : Application() {
     override fun start(primaryStage: Stage) {
         primaryStage.title = GameTitle
 
-        val root = GameView(imageResolver)
+        val root = createGameViewFrom(gameEngine, imageResolver)
         primaryStage.scene = Scene(root)
 
         primaryStage.show()
