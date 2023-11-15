@@ -6,8 +6,7 @@ package edu.austral.dissis.chess
 import edu.austral.dissis.common.adapter.ChessEngineAdapter
 import edu.austral.dissis.chess.factory.piece.ClassicPieceFactory
 import edu.austral.dissis.chess.factory.rule.ClassicRuleFactory
-import edu.austral.dissis.chess.game.ChessExecutioner
-import edu.austral.dissis.chess.game.ChessTurnManager
+import edu.austral.dissis.chess.game.*
 import edu.austral.dissis.chess.gui.CachedImageResolver
 import edu.austral.dissis.chess.gui.DefaultImageResolver
 import edu.austral.dissis.chess.gui.GameView
@@ -23,6 +22,7 @@ import edu.austral.dissis.common.piece.Color
 import edu.austral.dissis.common.rule.game.FriendlyFireRule
 import edu.austral.dissis.common.rule.game.NotYourTurnRule
 import edu.austral.dissis.chess.start.ClassicStartingBoard
+import edu.austral.dissis.common.game.Executioner
 
 
 fun main() {
@@ -39,7 +39,7 @@ class ChessGameApplication : Application() {
         Game(
             ClassicStartingBoard(ClassicPieceFactory(ClassicRuleFactory())).generate(),
             globalRules,
-            ChessExecutioner(),
+            Executioner(listOf(ChessPawnPromotionAction(), ChessCastlingAction(), ChessNormalAction())),
             ChessTurnManager(),
             Color.WHITE,
             CheckmateRule(globalRules),

@@ -20,6 +20,7 @@ import javafx.scene.Scene
 import javafx.stage.Stage
 import edu.austral.dissis.common.piece.Color
 import edu.austral.dissis.checkers.game.CheckersWinRule
+import edu.austral.dissis.common.game.Executioner
 import edu.austral.dissis.common.rule.game.FriendlyFireRule
 import edu.austral.dissis.common.rule.game.NotYourTurnRule
 
@@ -38,7 +39,7 @@ class CheckersGameApplication : Application() {
         Game(
             CheckersStartingBoard(CheckersPieceFactory(CheckersRuleFactory())).generate(),
             globalRules,
-            CheckersExecutioner(listOf(CheckersPromotionAction(),CheckersCaptureAction(), CheckersNormalAction())),
+            Executioner(listOf(CheckersPromotionAction(),CheckersCaptureAction(), CheckersNormalAction())),
             CheckersTurnManager(),
             Color.WHITE,
             CheckersWinRule(),
