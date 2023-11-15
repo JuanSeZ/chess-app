@@ -4,7 +4,7 @@ import edu.austral.dissis.common.board.Board
 import edu.austral.dissis.common.board.Move
 import edu.austral.dissis.common.game.MoveAction
 
-class NormalAction : MoveAction {
+class CheckersNormalAction : MoveAction {
     override fun appliesTo(move: Move): Boolean {
         return true
     }

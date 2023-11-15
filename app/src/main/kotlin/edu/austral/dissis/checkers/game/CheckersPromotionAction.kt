@@ -11,7 +11,7 @@ import edu.austral.dissis.common.game.MoveAction
 import edu.austral.dissis.common.piece.Color
 import edu.austral.dissis.common.piece.Piece
 
-class PromotionAction: MoveAction {
+class CheckersPromotionAction: MoveAction {
     override fun appliesTo(move: Move): Boolean {
         val orientation = if (move.board.getBoard()[move.from]?.color == Color.WHITE) -1 else 1
         return (move.to.row == 1 && orientation == -1) || (move.to.row == move.board.getRowsSize() && orientation == 1)

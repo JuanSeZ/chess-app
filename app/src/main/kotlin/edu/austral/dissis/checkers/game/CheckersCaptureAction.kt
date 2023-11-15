@@ -6,7 +6,7 @@ import edu.austral.dissis.common.board.Move
 import edu.austral.dissis.common.board.Position
 import edu.austral.dissis.common.game.MoveAction
 
-class CaptureAction : MoveAction {
+class CheckersCaptureAction : MoveAction {
     override fun appliesTo(move: Move): Boolean {
         return isCapture(move)
     }

@@ -38,7 +38,7 @@ class CheckersGameApplication : Application() {
         Game(
             CheckersStartingBoard(CheckersPieceFactory(CheckersRuleFactory())).generate(),
             globalRules,
-            CheckersExecutioner(listOf(PromotionAction(),CaptureAction(), NormalAction())),
+            CheckersExecutioner(listOf(CheckersPromotionAction(),CheckersCaptureAction(), CheckersNormalAction())),
             CheckersTurnManager(),
             Color.WHITE,
             CheckersWinRule(),
