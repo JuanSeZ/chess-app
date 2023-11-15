@@ -7,8 +7,8 @@ import edu.austral.ingsis.clientserver.MessageListener
 
 
 class MoveMessageListener(private val server: GameServer): MessageListener<Move> {
-
     override fun handleMessage(message: Message<Move>) {
         server.handleMove(message.payload)
     }
+
 }

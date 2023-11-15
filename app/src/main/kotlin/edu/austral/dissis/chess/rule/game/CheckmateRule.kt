@@ -12,12 +12,13 @@ import edu.austral.dissis.common.rule.Rule
 
 class CheckmateRule(private val globalRules: List<Rule>) : Rule {
     override fun validate(move: Move): ValidationResult {
+        val board = move.board.move(move.from,move.to)
         val enemy = oppositeColor(move.turn)
 
-        val enemyPiecesPositions = enemyPiecesPositions(move.board,enemy)
+        val enemyPiecesPositions = enemyPiecesPositions(board,enemy)
 
         for(position in enemyPiecesPositions){
-            val possibleMoves = findPossibleMoves(position,move.board, globalRules)
+            val possibleMoves = findPossibleMoves(position, board, globalRules)
             for(possibleMove in possibleMoves){
                 if(!isCheckAfterMove(possibleMove)) return ValidResult
             }

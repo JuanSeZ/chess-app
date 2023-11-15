@@ -28,7 +28,7 @@ class Game(
         if (globalValidationResult is UnsuccesfulMoveResult) return globalValidationResult
         val pieceValidationResult = validatePieceRules(move)
         if (pieceValidationResult !is SuccesfulMoveResult) return pieceValidationResult
-        val winningConditionResult = winningConditionRule.validate(Move(board.move(from,to),from,to,turn))
+        val winningConditionResult = winningConditionRule.validate(move)
         if (winningConditionResult is InvalidResult) return EndGameResult(turn)
         return pieceValidationResult
     }
