@@ -14,10 +14,13 @@ class VerticalObstacleRule : Rule {
             move.from.row + 1 to move.to.row
         }
         for (i in start until end) {
-            if (move.board.getPieceAt(move.from.copy(row = i)) != null) {
+            if (hasAPieceInTheWay(move, i)) {
                 return InvalidResult("There is a piece in the way!")
             }
         }
         return ValidResult
     }
+
+    private fun hasAPieceInTheWay(move: Move, i: Int) =
+        move.board.getPieceAt(move.from.copy(row = i)) != null
 }

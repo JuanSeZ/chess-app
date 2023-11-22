@@ -5,6 +5,7 @@ import edu.austral.dissis.common.board.Move
 import edu.austral.dissis.common.board.Position
 import edu.austral.dissis.common.result.validation.InvalidResult
 import edu.austral.dissis.common.piece.Color
+import edu.austral.dissis.common.piece.Piece
 import edu.austral.dissis.common.result.validation.ValidResult
 import edu.austral.dissis.common.rule.Rule
 
@@ -13,16 +14,48 @@ import edu.austral.dissis.common.rule.Rule
     val team = piece.color
     var validMoves = emptyList<Move>()
     for(i in 1..board.getRowsSize()){
-        for(j in 1..board.getColumnsSize()){
-            val to = Position(i,j)
-            val move = Move(board,piecePosition, to, team)
-            if(piece.rule.validate(move) is ValidResult && gameRules.all { it.validate(move) is ValidResult }){
-                validMoves = validMoves.plus(move)
-            }
-        }
+        validMoves = getPossibleMoves(board, i, piecePosition, team, validMoves, piece, gameRules)
     }
     return validMoves
 }
+
+private fun getPossibleMoves(
+    board: Board,
+    i: Int,
+    piecePosition: Position,
+    team: Color,
+    validMoves: List<Move>,
+    piece: Piece,
+    gameRules: List<Rule>
+): List<Move> {
+    var validMoves1 = validMoves
+    for (j in 1..board.getColumnsSize()) {
+        val to = Position(i, j)
+        val move = Move(board, piecePosition, to, team)
+        validMoves1 = moveList(piece, move, gameRules, validMoves1)
+    }
+    return validMoves1
+}
+
+private fun moveList(
+    piece: Piece,
+    move: Move,
+    gameRules: List<Rule>,
+    validMoves: List<Move>
+): List<Move> {
+    var validMoves1 = validMoves
+    if (isValid(piece, move, gameRules)) {
+        validMoves1 = validMoves1.plus(move)
+    }
+    return validMoves1
+}
+
+private fun isValid(
+    piece: Piece,
+    move: Move,
+    gameRules: List<Rule>
+) = piece.rule.validate(move) is ValidResult && gameRules.all { it.validate(move) is ValidResult }
+
 fun isInCheckAfterMove(move: Move): Boolean {
     val newBoard = move.board.move(move.from,move.to)
     return isCheck(newBoard,move.turn)
@@ -42,10 +75,15 @@ fun getKingPosition(board: Board, turn: Color): Position? {
     val positions = board.getOccupiedPositions()
     for (position in positions) {
         val piece = board.getPieceAt(position) ?: throw NoSuchElementException("No piece found")
-        if (piece.type.getValue() == "king" && piece.color == turn) return position
+        if (isKingAndTurn(piece, turn)) return position
     }
     return null
 }
+
+private fun isKingAndTurn(
+    piece: Piece,
+    turn: Color
+) = piece.type.getValue() == "king" && piece.color == turn
 
 fun oppositeColor(turn: Color): Color {
     return when (turn) {
@@ -55,7 +93,7 @@ fun oppositeColor(turn: Color): Color {
 }
 
 fun attacksKing(board: Board, position: Position, turn: Color, kingsPosition: Position): Boolean {
-    if (board.getPieceAt(position)?.color != turn) {
+    if (isPieceIsEnemy(board, position, turn)) {
         val piece = board.getPieceAt(position) ?: throw NoSuchElementException("No piece found")
         when (
             piece.rule.validate(
@@ -69,5 +107,11 @@ fun attacksKing(board: Board, position: Position, turn: Color, kingsPosition: Po
     }
     return false
 }
+
+private fun isPieceIsEnemy(
+    board: Board,
+    position: Position,
+    turn: Color
+) = board.getPieceAt(position)?.color != turn
 
 

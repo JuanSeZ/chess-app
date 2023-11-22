@@ -10,21 +10,14 @@ import edu.austral.dissis.common.rule.Rule
 class ShouldCaptureRule : Rule {
 
     override fun validate(move: Move): ValidationResult {
-        if (move.history.isNotEmpty() && lastMoveWasCapture(move)) {
-            if (isPossibleToCaptureAgain(move)) {
-                if (isCapture(move)) {
-                    if (!isTheSamePiece(move)) {
-                        return InvalidResult("You must capture with the same piece")
-                    }
-                } else {
-                    return InvalidResult("You must capture a piece")
-                }
-            } else {
-                return ValidResult
-            }
-        } else {
+        if (move.history.isEmpty() || !lastMoveWasCapture(move) || !isPossibleToCaptureAgain(move)) {
             return ValidResult
         }
-        return ValidResult
+
+        if (!isCapture(move)) {
+            return InvalidResult("You must capture a piece")
+        }
+
+        return if (isTheSamePiece(move)) ValidResult else InvalidResult("You must capture with the same piece")
     }
 }

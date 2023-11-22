@@ -20,12 +20,30 @@ class DiagonalObstacleRule: Rule {
             move.from.row + 1 to move.to.row
         }
         for (i in start until end) {
-            for (j in startY until endY) {
-                if ((move.board.getPieceAt(move.from.copy(column = i, row = j)) != null) && abs(i - move.to.column) == abs(j - move.to.row) ) {
-                    return InvalidResult("There is a piece in the way!")
-                }
-            }
+            if (hasAPieceInBetween(startY, endY, move, i)) return InvalidResult("There is a piece in the way!")
         }
         return ValidResult
     }
+
+    private fun hasAPieceInBetween(
+        startY: Int,
+        endY: Int,
+        move: Move,
+        i: Int
+    ): Boolean {
+        for (j in startY until endY) {
+            if (isThereIsAPieceInBetween(move, i, j)) {
+                return true
+            }
+        }
+        return false
+    }
+
+    private fun isThereIsAPieceInBetween(move: Move, i: Int, j: Int) =
+        (move.board.getPieceAt(
+            move.from.copy(
+                column = i,
+                row = j
+            )
+        ) != null) && abs(i - move.to.column) == abs(j - move.to.row)
 }

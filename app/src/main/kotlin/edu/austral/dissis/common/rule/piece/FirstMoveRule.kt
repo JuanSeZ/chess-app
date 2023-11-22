@@ -8,7 +8,9 @@ import edu.austral.dissis.common.rule.Rule
 
 class FirstMoveRule : Rule {
     override fun validate(move: Move): ValidationResult {
-        if (move.board.getPieceAt(move.from)?.getMoveCount()!! > 0) return InvalidResult("You can't move this piece!")
+        if (hasMoveAlready(move)) return InvalidResult("You can't move this piece!")
         return ValidResult
     }
+
+    private fun hasMoveAlready(move: Move) = move.board.getPieceAt(move.from)?.getMoveCount()!! > 0
 }

@@ -13,9 +13,11 @@ import edu.austral.dissis.common.piece.Piece
 
 class CheckersPromotionAction: MoveAction {
     override fun appliesTo(move: Move): Boolean {
-        val orientation = if (move.board.getBoard()[move.from]?.color == Color.WHITE) -1 else 1
+        val orientation = if (isWhite(move)) -1 else 1
         return (move.to.row == 1 && orientation == -1) || (move.to.row == move.board.getRowsSize() && orientation == 1)
     }
+
+    private fun isWhite(move: Move) = move.board.getBoard()[move.from]?.color == Color.WHITE
 
     override fun apply(move: Move): Board {
         val board = move.board

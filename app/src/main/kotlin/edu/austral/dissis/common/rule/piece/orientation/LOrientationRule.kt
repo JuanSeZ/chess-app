@@ -11,7 +11,9 @@ class LOrientationRule : Rule {
     override fun validate(move: Move): ValidationResult {
         val xDiff = abs(move.from.column - move.to.column)
         val yDiff = abs(move.from.row - move.to.row)
-        if ((xDiff == 1 && yDiff == 2) || (xDiff == 2 && yDiff == 1)) return ValidResult
+        if (isInRange(xDiff, yDiff)) return ValidResult
         return InvalidResult("L orientation rule violated!")
     }
+
+    private fun isInRange(xDiff: Int, yDiff: Int) = (xDiff == 1 && yDiff == 2) || (xDiff == 2 && yDiff == 1)
 }

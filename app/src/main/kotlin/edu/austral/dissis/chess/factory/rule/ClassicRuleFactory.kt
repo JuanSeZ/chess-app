@@ -27,6 +27,7 @@ class ClassicRuleFactory: RuleFactory {
             "bishop" -> classicBishopRule()
             "queen" -> classicQueenRule()
             "king" -> classicKingRule()
+
             else -> {
                 throw RuntimeException("Piece type not found")}
         }

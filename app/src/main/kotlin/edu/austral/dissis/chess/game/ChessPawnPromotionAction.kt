@@ -12,9 +12,11 @@ import edu.austral.dissis.common.piece.Piece
 
 class ChessPawnPromotionAction : MoveAction {
     override fun appliesTo(move: Move): Boolean {
-        val limit = if (move.board.getBoard()[move.from]?.color == Color.WHITE) move.board.getRowsSize() else 0
+        val limit = if (isWhite(move)) move.board.getRowsSize() else 1
         return move.to.row == limit && move.board.getBoard()[move.from]?.type?.getValue() == "pawn"
     }
+
+    private fun isWhite(move: Move) = move.board.getBoard()[move.from]?.color != Color.WHITE
 
     override fun apply(move: Move): Board {
         val board = move.board

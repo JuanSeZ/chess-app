@@ -14,10 +14,13 @@ class HorizontalObstacleRule : Rule {
             move.from.column + 1 to move.to.column
         }
         for (i in start until end) {
-            if (move.board.getPieceAt(move.from.copy(column = i)) != null) {
+            if (isThereIsAPieceBetween(move, i)) {
                 return InvalidResult("There is a piece in the way!")
             }
         }
         return ValidResult
     }
+
+    private fun isThereIsAPieceBetween(move: Move, i: Int) =
+        move.board.getPieceAt(move.from.copy(column = i)) != null
 }

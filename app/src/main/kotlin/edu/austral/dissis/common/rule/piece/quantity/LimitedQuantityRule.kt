@@ -9,7 +9,10 @@ import kotlin.math.abs
 
 class LimitedQuantityRule(private val quantity : Int) : Rule {
     override fun validate(move: Move): ValidationResult {
-        if( abs(move.to.column - move.from.column) == quantity || abs(move.to.row - move.from.row) == quantity) return ValidResult
+        if(isInRange(move)) return ValidResult
         return InvalidResult("You can't move that far!")
     }
+
+    private fun isInRange(move: Move) =
+        abs(move.to.column - move.from.column) == quantity || abs(move.to.row - move.from.row) == quantity
 }

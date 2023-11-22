@@ -15,8 +15,8 @@ class CheckersCaptureAction : MoveAction {
         val from = move.from
         val to = move.to
 
-        val rowDirection = if (to.row > from.row) 1 else -1
-        val colDirection = if (to.column > from.column) 1 else -1
+        val rowDirection = if (rowIsBigger(to, from)) 1 else -1
+        val colDirection = if (columnIsBigger(to, from)) 1 else -1
 
         var currentRow = from.row + rowDirection
         var currentCol = from.column + colDirection
@@ -25,4 +25,14 @@ class CheckersCaptureAction : MoveAction {
 
         return move.board.move(move.from, move.to).removePiece(currentPosition)
     }
+
+    private fun columnIsBigger(
+        to: Position,
+        from: Position
+    ) = to.column > from.column
+
+    private fun rowIsBigger(
+        to: Position,
+        from: Position
+    ) = to.row > from.row
 }

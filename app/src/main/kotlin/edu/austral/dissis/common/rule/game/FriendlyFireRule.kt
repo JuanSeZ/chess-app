@@ -8,7 +8,10 @@ import edu.austral.dissis.common.rule.Rule
 
 class FriendlyFireRule : Rule {
     override fun validate(move: Move): ValidationResult {
-        if (move.board.getPieceAt(move.to)?.color != move.board.getPieceAt(move.from)?.color) return ValidResult
+        if (isFriendly(move)) return ValidResult
         return InvalidResult("You can't eat your own pieces!")
     }
+
+    private fun isFriendly(move: Move) =
+        move.board.getPieceAt(move.to)?.color != move.board.getPieceAt(move.from)?.color
 }

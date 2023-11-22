@@ -4,6 +4,7 @@ import edu.austral.dissis.common.board.Board
 import edu.austral.dissis.common.board.Move
 import edu.austral.dissis.common.board.Position
 import edu.austral.dissis.common.piece.Color
+import edu.austral.dissis.common.piece.Piece
 
 fun isCapture(move: Move): Boolean {
 
@@ -21,7 +22,7 @@ fun isCapture(move: Move): Boolean {
     val piece = move.board.getPieceAt(currentPosition)
     val toPiece = move.board.getPieceAt(to)
 
-    return piece != null && piece.color != move.turn && toPiece == null
+    return pieceNotNullAndEnemy(piece, move, toPiece)
 
 }
 fun isPossibleToCaptureAgain(move: Move): Boolean {
@@ -41,7 +42,7 @@ fun isPossibleToCapture(move: Move): Boolean {
 
 
 private fun isPossibleToCaptureBackwards(move: Move): Boolean {
-    val orientation = if (move.board.getBoard()[move.from]?.color == Color.WHITE) 1 else -1
+    val orientation = if (isWhite(move)) 1 else -1
     val from = move.from
 
     return (isPossibleToCapture(move, from.column - 2, from.row + 2 * orientation) ||
@@ -49,19 +50,27 @@ private fun isPossibleToCaptureBackwards(move: Move): Boolean {
 }
 
 private fun isPossibleToCaptureForward(move: Move): Boolean {
-    val orientation = if (move.board.getBoard()[move.from]?.color == Color.WHITE) -1 else 1
+    val orientation = if (isWhite(move)) -1 else 1
     val from = move.from
 
     return (isPossibleToCapture(move, from.column - 2, from.row + 2 * orientation) ||
             isPossibleToCapture(move, from.column + 2, from.row + 2 * orientation))
 }
 
+private fun isWhite(move: Move) = move.board.getBoard()[move.from]?.color == Color.WHITE
+
 private fun isPossibleToCapture(move: Move, column: Int, row: Int): Boolean {
     val position = Position(column, row)
-    if (position.row > move.board.getRowsSize() || position.column > move.board.getColumnsSize() || position.row < 1 || position.column < 1) return false
+    if (isInRange(position, move)) return false
     val possibleMove = Move(move.board, move.from, position, move.turn)
     return isCapture(possibleMove)
 }
+
+private fun isInRange(
+    position: Position,
+    move: Move
+) =
+    position.row > move.board.getRowsSize() || position.column > move.board.getColumnsSize() || position.row < 1 || position.column < 1
 
 fun lastMoveWasCapture(move: Move): Boolean {
     if(move.history.isEmpty()) return false
@@ -92,12 +101,18 @@ fun removeAndMoveCapturedPiece(move: Move): Board {
     val piece = move.board.getPieceAt(currentPosition)
     val toPiece = move.board.getPieceAt(to)
 
-    if (piece != null && piece.color != move.turn && toPiece == null) {
+    if (pieceNotNullAndEnemy(piece, move, toPiece)) {
         val newBoard = move.board.removePiece(currentPosition)
         return newBoard.move(from, to)
     }
     return move.board
 }
+
+private fun pieceNotNullAndEnemy(
+    piece: Piece?,
+    move: Move,
+    toPiece: Piece?
+) = piece != null && piece.color != move.turn && toPiece == null
 
 fun isTheSamePiece(move: Move): Boolean {
     return move.from == move.history.last().to && move.history.last().turn == move.turn

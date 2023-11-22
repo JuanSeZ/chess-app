@@ -9,7 +9,10 @@ import kotlin.math.abs
 
 class DiagonalOrientationRule : Rule {
     override fun validate(move: Move): ValidationResult {
-        if(abs(move.from.column - move.to.column) == abs(move.from.row - move.to.row)) return ValidResult
+        if(isDiagonal(move)) return ValidResult
         return InvalidResult("You can't move diagonally!")
     }
+
+    private fun isDiagonal(move: Move) =
+        abs(move.from.column - move.to.column) == abs(move.from.row - move.to.row)
 }

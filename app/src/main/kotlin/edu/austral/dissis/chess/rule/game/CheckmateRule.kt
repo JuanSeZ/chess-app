@@ -19,11 +19,16 @@ class CheckmateRule(private val globalRules: List<Rule>) : Rule {
 
         for(position in enemyPiecesPositions){
             val possibleMoves = findPossibleMoves(position, board, globalRules)
-            for(possibleMove in possibleMoves){
-                if(!isCheckAfterMove(possibleMove)) return ValidResult
-            }
+            if (hasAPossibleMove(possibleMoves)) return ValidResult
         }
         return InvalidResult("Checkmate!")
+    }
+
+    private fun hasAPossibleMove(possibleMoves: List<Move>): Boolean {
+        for (possibleMove in possibleMoves) {
+            if (!isCheckAfterMove(possibleMove)) return true
+        }
+        return false
     }
 
     private fun isCheckAfterMove(move: Move): Boolean {

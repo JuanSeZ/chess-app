@@ -8,8 +8,10 @@ import edu.austral.dissis.common.rule.Rule
 
 class HasNotEnemyRule : Rule {
     override fun validate(move: Move): ValidationResult {
-        if (move.board.getPieceAt(move.to) != null) return InvalidResult("You can't eat vertically!")
+        if (hasEnemy(move)) return InvalidResult("You can't eat vertically!")
         return ValidResult
     }
+
+    private fun hasEnemy(move: Move) = move.board.getPieceAt(move.to) != null
 
 }
